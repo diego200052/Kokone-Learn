@@ -16,6 +16,7 @@ import { SignupProfComponent } from './signup-prof/signup-prof.component';
 import { LogInComponent } from './log-in/log-in.component';
 
 import { FormsModule } from '@angular/forms';
+import { CursosProfesorComponent } from './cursos-profesor/cursos-profesor.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     AlumnoComponent,
     SignupAluComponent,
     SignupProfComponent,
-    LogInComponent
+    LogInComponent,
+    CursosProfesorComponent
   ],
   imports: [
     /* Módulos de biblioteca */

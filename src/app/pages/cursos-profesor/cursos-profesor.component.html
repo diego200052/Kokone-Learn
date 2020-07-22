@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <!-- Título -->
+        <div class="col s12 m2">
+            <h3>Cursos</h3>
+        </div>
+        <!-- Botón de agregar curso para computadoras o tablets -->
+        <div class="col m10 mt40 hide-on-small-only right-align">
+            <a class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Agregar curso</a>
+        </div>
+        <!-- Botón de agregar curso para celulares -->
+        <div class="col s12 hide-on-med-and-up">
+            <a class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Agregar curso</a>
+        </div>
+        <div class="col s12"><span class="flow-text">This div is 12-columns wide on all screen sizes</span></div>
+        <div class="col s6 offset-s6"><span class="flow-text">6-columns (offset-by-6)</span></div>
+    </div>
+</div>
+
+<div *ngIf="cursos?.length == 0;else tieneCursos">
+    <div class="container center-align">
+        <h3>No has creado ningún curso todavía.</h3>
+    </div>
+</div>
+
+<ng-template #tieneCursos>
+    <div class="container">
+        
+    </div>
+</ng-template>

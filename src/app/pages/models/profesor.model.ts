@@ -14,8 +14,8 @@ export class Profesor{
         this.apellidoMaterno = apMaterno;
         this.apellidoPaterno = apPaterno;
         this.usuario = username;
-        this.password = contr;
         this.correo = correo;
+        this.password = contr;
     }
 
 

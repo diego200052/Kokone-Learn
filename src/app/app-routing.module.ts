@@ -17,6 +17,7 @@ import { ProfesorComponent } from './pages/profesor/profesor.component';
 
 /* Guard de autenticación */
 import { AuthenticationGuard } from './authentication.guard'
+import { CursosProfesorComponent } from './pages/cursos-profesor/cursos-profesor.component';
 
 /* 
   Este archivo se encarga de establecer las rutas dependiendo de la
@@ -25,28 +26,27 @@ import { AuthenticationGuard } from './authentication.guard'
 
 const routes: Routes = [
 
-  //Si un usuario escribe la ruta /home carga el HomeComponent
+  /* Páginas estáticas */
   { path: 'home', component: HomeComponent },
   { path: 'error404', component: Error404Component },
 
-  /* Páginas Alumno */
+  /* Página de Registros (profesor/alumno) */
+  { path: 'regprofe', component: SignupProfComponent },
   { path: 'regalumno', component: SignupAluComponent },
+
+  /* Páginas de acceso al Alumno */
   { path: 'alumno', component: AlumnoComponent, canActivate: [AuthenticationGuard], data: {role: 'alumno'} },
 
-  /* Páginas Profesor/Mentor */
-  { path: 'regprofe', component: SignupProfComponent },
+  /* Páginas de acceso al Profesor */
   { path: 'profesor', component: ProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
-
-  /* Pruebas */
-  { path: 'agregarDiapositiva', component: DiapositivaComponent },
-  { path: 'seleccionarPlantilla', component: SelplantillaComponent },
+  { path: 'profesor/cursos', component: CursosProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
+  { path: 'profesor/cursos/:idCurso/clase/:idClase/agregarDiapositiva', component: DiapositivaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
+  { path: 'profesor/cursos/:idCurso/clase/:idClase/seleccionarPlantilla', component: SelplantillaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
 
   /* ******** Pagina Log In ******** */
   { path: 'login', component: LogInComponent },
   /* ******** Pagina Cursos Alu ******** */
   { path: 'cursosAlumno', component: CursosAlumnoComponent },
-
-
   
   /* Página principal */
   { path: '', pathMatch: 'full', redirectTo: 'home' },

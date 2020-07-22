@@ -24,7 +24,7 @@ export class SignupProfComponent implements OnInit {
   }
   
   guardar ( n:string, apPaterno: string, apMaterno: string, username: string,
-           password:string, correo: string) {
+          correo: string, password:string) {
 
         //Agregamos al profesor
         this.profesores.push(new Profesor(n, apPaterno, apMaterno, username, correo, password));
