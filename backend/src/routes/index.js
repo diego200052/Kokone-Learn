@@ -1,11 +1,26 @@
 const { Router } = require('express');
 const router = Router();
 
-const User = require('../models/user');
-
 const jwt = require('jsonwebtoken');
 
+const multer = require('multer');
+const path = require('path');
+const { v4: uuidv4 } = require('uuid');
+
+const User = require('../models/user');
+
 router.get('/', (req, res) => res.send('Hello World'));
+
+//Configuracion de multer
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, '../public/images'))
+    },
+    //Esta opcion es para decirle con que nombre guardar la imagen en el servidor
+    filename: (req, file, cb) =>{
+        cb(null, uuidv4() + path.extname(file.originalname)); //El archivo se guardara con un UUID unico y su extension
+    }
+});
 
 router.post('/signup', async (req,res) => {
     console.log(req.body);
@@ -71,6 +86,43 @@ router.get('/private-task', verifyToken , (req, res) => {
             date: '2020-07-20T04:13:56.063Z'
         }]);
 })
+
+//Procesador de imagenes
+const upload = multer({
+    storage, //Carga la configuracion que establecimos anteriormente
+    dest: path.join(__dirname, '../public/images'),//Definimos la ruta en donde se subiran las imagenes
+    limits: {fileSize: 1000000}, // Aqui especificamos que el tamaño maximo de la imagen es de 1mb
+    fileFilter: (req, file, cb) =>{
+        const filetypes = /jpeg|jpg|png|gif/;
+        const mimetype = filetypes.test(file.mimetype); //Comprobamos si el archivo coincide con las extenciones
+        const extname = filetypes.test(path.extname(file.originalname))//Obtenemos la extencion del archivo y comprobamos si coincide con las extenciones
+        if(mimetype && extname){
+            return cb(null, true);
+        }
+        cb("Error: El archivo debe ser una imagen valida");
+    }
+}).single('image'); //.single ('Nombre del formulario html name="image"') //single solo permite la subida de 1 imagen
+
+router.post('/upload'/*, verifyToken */, (req, res) => {
+    upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            return res.status(200).json({
+                error: 'A Multer error occurred when uploading.'
+            });
+        } else if (err) {
+            return res.status(200).json({
+                error: 'An unknown error occurred when uploading.'
+            });
+        }
+        if(!req.file) return res.status(200).json({
+            error: 'An unknown error occurred when uploading.'
+        });
+        res.status(200).json({
+            path: `/images/${req.file.filename}`
+        });
+        console.log(req.file);
+    });
+});
 
 module.exports = router;
 

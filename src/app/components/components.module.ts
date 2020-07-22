@@ -12,6 +12,7 @@ import { SelplantillaComponent } from './selplantilla/selplantilla.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { FooterComponent } from './footer/footer.component';
     DragDropModule,
     HttpClientModule,
     AngularEditorModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     /* Componentes del sitio para ser utilizados dentro de pages */

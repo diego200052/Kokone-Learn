@@ -1,28 +1,50 @@
-<div cdkDropListGroup>
-    <div class="example-container">
-      <h2>Available items</h2>
-  
-      <div
-        cdkDropList
-        [cdkDropListData]="items"
-        class="example-list"
-        cdkDropListSortingDisabled
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
-      </div>
+<div class="container mt50 diapositiva">
+  <div class="row">
+    <div class="col s12">
+      <form [formGroup]="formTitulo">
+        <div class="count-box">Límite de caracteres: {{totalCountTitulo}}/65</div>
+        <angular-editor (keyup)="onkeytitulo()" (keydown)="onkeytitulo()" autofocus="true" formControlName="editorTituloName" id="editorTitulo" [config]="editorTitle" (ngModelChange)="onChange($event)" (blur)="onBlur($event)"></angular-editor>
+      </form>
     </div>
-  
-    <div class="example-container">
-      <h2>Shopping basket</h2>
-  
-      <div
-        cdkDropList
-        [cdkDropListData]="basket"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of basket" cdkDrag>{{item}}</div>
-      </div>
+    <div class="col s12 m6 mt20">
+      <form [formGroup]="form">
+        <div class="count-box">Límite de caracteres: {{totalCountTexto}}/750</div>
+        <angular-editor (keyup)="onkeytexto()" (keydown)="onkeytexto()" id="editorTexto" formControlName="editorTextoName" [config]="editorText" (ngModelChange)="onChange2($event)"></angular-editor>
+      </form>
     </div>
+    <div class="col s12 m6 mt40">
+      <div *ngIf="!archivoCargado; else showImage" class="row">
+        <form class="col s12" action="http://localhost:3000/api/upload" method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <label>Carga una imagen para colocar en la diapositiva.</label>
+              <div class="file-field input-field">
+                  <div class="btn">
+                    <i class="material-icons"></i>
+                    <span>Seleccionar</span>
+                    <input type="file" (change)="fileProgress($event)" name="image"/>
+                  </div>
+                  <div class= "file-path-wrapper">
+                    <input class= "file-path validate" type="text" placeholder= "Cargar una imagen" />
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col m6 offset-m4 s6 offset-s3">
+                <button (click)="fnPostImage()" class="waves-effect waves-light btn"><i class="material-icons left">cloud_uploadd</i>Subir imagen</button>
+              </div>
+            </div>
+        </form>       
+      </div>
+      <ng-template #showImage>
+        <div class="row">
+          <img class="imagePreview" [src]="imageURL">
+        </div>
+      </ng-template>
+    </div>
+  </div>
 </div>
-
-<angular-editor id="editor1" formControlName="htmlContent1" [config]="editorConfig"></angular-editor>
+<div class="container">
+  <p>
+    Form Value: {{ form.value.editorTextoName }}
+  </p>
+</div>

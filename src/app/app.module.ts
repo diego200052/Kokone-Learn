@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PagesModule } from './pages/pages.module';
     BrowserAnimationsModule,
 
     ComponentsModule,
-    PagesModule
+    PagesModule,
+    FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
