@@ -1,19 +1,26 @@
 <!-- Plantilla de navbar responsiva con materialize -->
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper yellow lighten-2">
         <a href="#" class="brand-logo ">
             <img src="assets/logokids.png">
         </a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="home">Home</a></li>
-            <li><a href="regprofe">Registro Profesores</a></li>
-            <li><a href="regalumno">Registro Alumnos</a></li> 
-            <li><a href="login">Ingresar</a></li>
-            <li><a href="cursosAlumno">CursosAlum</a></li>
+            <li><a href="home"><i class="large material-icons">home</i>Home</a></li>
+            <!-- <li><a href="regprofe">Registro Profesores</a></li> -->
+            <!-- <li><a href="regalumno">Registro Alumnos</a></li>  -->
+            <li><a href="cursosAlumno"><i class="large material-icons">local_library</i>CursosAlum</a></li>
+            <li><a href="login"><i class="large material-icons">person_pin</i>Ingresar</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><i class="large material-icons">fiber_new</i>Registro<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
       </div>
 </nav>
+
+<!-- Dropdown Structure -->
+<ul id="dropdown2" class="dropdown-content">
+    <li><a href="regprofe">Profesores</a></li>
+    <li><a href="regalumno">Alumnos</a></li>
+</ul>
 
 <ul class="sidenav" id="mobile-demo">
     <li><a href="home">Home</a></li>

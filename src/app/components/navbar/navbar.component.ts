@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
     (function ($) {
       $(document).ready(function(){
         $('.sidenav').sidenav();
+        $('.dropdown-trigger').dropdown();
       });
     })(jQuery);
   }
