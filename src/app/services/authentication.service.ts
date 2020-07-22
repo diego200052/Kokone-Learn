@@ -15,9 +15,14 @@ export class AuthenticationService {
     private router: Router
   ) { }
 
-  /* Registro de usuario */
-  signUp(user){
-    return this.http.post<any>(this.URL+'/signup', user);
+  /* Registro de un profesor */
+  signUpProfesor(user){
+    return this.http.post<any>(this.URL+'/signupProfesor', user);
+  }
+
+  /* Registro de un alumno */
+  signUpAlumno(user){
+    return this.http.post<any>(this.URL+'/signupAlumno', user);
   }
 
   /* Iniciar sesión */
@@ -30,8 +35,16 @@ export class AuthenticationService {
     return !!localStorage.getItem('token') //Si existe retorna true, si no false
   }
 
+  isProfesor(){
+    return this.http.post<any>(this.URL+'/isProfesor', {token:this.getToken()})
+  }
+
+  isAlumno(){
+    return this.http.post<any>(this.URL+'/isAlumno', {token:this.getToken()})
+  }
+
   /* Obtener el token del usuario almacenado en su navegador */
-  getToken(){
+  getToken():string{
     return localStorage.getItem('token')
   }
 

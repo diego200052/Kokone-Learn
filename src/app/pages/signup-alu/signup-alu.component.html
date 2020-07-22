@@ -26,7 +26,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="validationServer01">Nombre</label>
-                        <input type="text" class="form-control browser-default" id="validationServer01" placeholder="First name" required #n>
+                        <input name="nombre" type="text" class="form-control browser-default" id="validationServer01" placeholder="First name" required #n>
                         <div class="valid-feedback"> Parece ser correcto</div>
                         <div class="invalid-feedback">Necesitas ingresar tu nombre </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend3">@</span>
                         </div>
-                        <input type="text" class="form-control browser-default" id="validationServerUsername" placeholder="Username" 
+                        <input name="username" type="text" class="form-control browser-default" id="validationServerUsername" placeholder="Username" 
                                 aria-describedby="inputGroupPrepend3" required  #username>
                                 <div class="valid-feedback"> Parece ser correcto</div>
                                 <div class="invalid-feedback">Es necesario ingresar un nombre de usuario </div>
@@ -47,14 +47,14 @@
              <div class="form-row">
                 <div class="col">
                     <label for="validationServer02">Apellido Paterno</label>
-                    <input type="text" class="form-control browser-default" id="validationServer02" 
+                    <input name="apellidoPaterno" type="text" class="form-control browser-default" id="validationServer02" 
                             placeholder="Apellido Paterno"   #apPaterno required >
                             <div class="valid-feedback"> Parece ser correcto</div>
                             <div class="invalid-feedback">Ingresa tu apellido paterno</div>
                 </div>
                 <div class="col">
                     <label for="validationServer02">Contraseña</label>
-                    <input type="password" pattern=".{6,}" class="form-control browser-default" id="validationServer02" placeholder="Ingresa una contraseña" required #contr>
+                    <input name="password" type="password" pattern=".{6,}" class="form-control browser-default" id="validationServer02" placeholder="Ingresa una contraseña" required #contr>
                     <div class="valid-feedback"> Parece ser correcto</div>
                     <div class="invalid-feedback">Ingresa una contraseña valida (min. 6 caracteres)</div>
                 </div>
@@ -63,14 +63,14 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="validationServer02">Apellido Materno</label>
-                        <input type="text" class="form-control browser-default" id="validationServer02" placeholder="Apellido Materno"
+                        <input name="apellidoMaterno" type="text" class="form-control browser-default" id="validationServer02" placeholder="Apellido Materno"
                                 required   #apMaterno >
                                 <div class="valid-feedback"> Parece ser correcto</div>
                                 <div class="invalid-feedback">Ingresa tu apellido materno</div>
                     </div>
                 <div class="col">
                     <label for="validationServer03">Escuela</label>
-                    <input type="text" class="form-control browser-default" id="validationServer03" placeholder="Ingresa el nombre de tu escuela"
+                    <input name="escuela" type="text" class="form-control browser-default" id="validationServer03" placeholder="Ingresa el nombre de tu escuela"
                              required   #escuela>
                     <div class="invalid-feedback">
                     Selecciona el nombre de tu escuela, si aùn no aparece, espera a que tu profesor registre el curso.
@@ -81,7 +81,7 @@
          <div class="form-row">
                 <div class="col">
                     <label for="validationServer04">Correo</label>
-                    <input type="text" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control browser-default" id="validationServer04" placeholder="Ingresa tu correo electronico"
+                    <input name="correo" type="text" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control browser-default" id="validationServer04" placeholder="Ingresa tu correo electronico"
                              required  #correo>
                     <div class="invalid-feedback">  Ingresa un correo valido. </div>
                     <div class="valid-feedback"> Parece ser correcto</div>
@@ -98,7 +98,7 @@
                 </div>
                 
                 <button [disabled]="!userRegistrationForm.valid" class="btn btn-primary" type="submit" (click)="guardar(n.value, apPaterno.value, apMaterno.value, username.value,
-                contr.value, escuela.value, correo.value)">Registrarse!</button>
+                correo.value, contr.value, escuela.value)">Registrarse!</button>
             </form>
 
       </div>

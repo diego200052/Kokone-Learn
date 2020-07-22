@@ -24,11 +24,11 @@
         <h6>Ingresar</h6>
             <!--  #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
 -->
-         <form class="was-validated" #userRegistrationForm="ngForm">
+         <form class="was-validated" #userRegistrationForm="ngForm" (submit)="signIn()">
             <div class="form-row">
                 <div class="col">
                     <label for="validationServer04">Correo</label>
-                    <input type="text" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control browser-default" id="validationServer04" placeholder="Ingresa tu correo electronico"
+                    <input name="email" [(ngModel)]="user.email" type="text" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control browser-default" id="validationServer04" placeholder="Ingresa tu correo electronico"
                              required  #correo>
                     <div class="invalid-feedback">  Ingresa el correo con el que te registraste. </div>
                     <div class="valid-feedback"> Parece ser correcto</div>
@@ -38,7 +38,7 @@
             <div class="form-row">
                 <div class="col">
                     <label for="validationServer02">Contraseña</label>
-                    <input type="password" pattern=".{6,}" class="form-control browser-default" id="validationServer02" placeholder="Ingresa una contraseña" required #contr>
+                    <input name="password" [(ngModel)]="user.password" type="password" pattern=".{6,}" class="form-control browser-default" id="validationServer02" placeholder="Ingresa una contraseña" required #contr>
                     <div class="valid-feedback"> Parece ser correcto</div>
                     <div class="invalid-feedback">*Ingresa tu contraseña </div>
                 </div>

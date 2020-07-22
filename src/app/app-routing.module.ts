@@ -30,11 +30,11 @@ const routes: Routes = [
 
   /* Páginas Alumno */
   { path: 'regalumno', component: SignupAluComponent },
-  { path: 'alumno', component: AlumnoComponent, canActivate: [AuthenticationGuard] },
+  { path: 'alumno', component: AlumnoComponent, canActivate: [AuthenticationGuard], data: {role: 'alumno'} },
 
   /* Páginas Profesor/Mentor */
   { path: 'regprofe', component: SignupProfComponent },
-  { path: 'profesor', component: ProfesorComponent, canActivate: [AuthenticationGuard] },
+  { path: 'profesor', component: ProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
 
   /* Pruebas */
   { path: 'agregarDiapositiva', component: DiapositivaComponent },

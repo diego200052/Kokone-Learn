@@ -1,17 +1,18 @@
 const { Router } = require('express');
+var ObjectId = require('mongoose').Types.ObjectId; 
 const router = Router();
-
+/* Biblioteca de autenticación vía tokens */
 const jwt = require('jsonwebtoken');
-
+/* Bibliotecas para api de imágenes */
 const multer = require('multer');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
-const User = require('../models/user');
+/* Modelos de la base de datos */
+const Profesor = require('../models/profesor');
+const Alumno = require('../models/alumno');
 
-router.get('/', (req, res) => res.send('Hello World'));
-
-//Configuracion de multer
+/* Configuracion de multer */
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, path.join(__dirname, '../public/images'))
@@ -22,27 +23,107 @@ const storage = multer.diskStorage({
     }
 });
 
-router.post('/signup', async (req,res) => {
-    console.log(req.body);
-    const { email, password } = req.body;
-    const newUser = new User({email, password});
-    console.log(newUser);
-    await newUser.save();
+/* Definición de rutas */
+router.get('/', (req, res) => res.send('Hello World'));
 
-    const token = jwt.sign({_id: newUser._id}, 'secretKey');
+/* Registro de profesores */
+router.post('/signupProfesor', async (req,res) => {
+    console.log(req.body);
+    const { nombre, apellidoPaterno, apellidoMaterno, usuario, correo, password } = req.body;
+    const newProfesor = new Profesor({nombre, apellidoPaterno, apellidoMaterno, usuario, correo, password});
+    console.log(newProfesor);
+    await newProfesor.save();
+
+    const token = jwt.sign({_id: newProfesor._id}, 'secretKey');
+    /* Retorna un token, el registro fue exitoso */
     res.status(200).json({token});
 });
 
+/* Registro de alumnos */
+router.post('/signupAlumno', async (req,res) => {
+    console.log(req.body);
+    const { nombre, apellidoPaterno, apellidoMaterno, usuario, correo, password, escuela } = req.body;
+    const newAlumno = new Alumno({nombre, apellidoPaterno, apellidoMaterno, usuario, correo, password, escuela});
+    console.log(newAlumno);
+    await newAlumno.save();
+
+    const token = jwt.sign({_id: newAlumno._id}, 'secretKey');
+    /* Retorna un token, el registro fue exitoso */
+    res.status(200).json({token});
+});
+
+/* Inicio de sesión */
 router.post('/signin', async (req, res) => {
 
     const { email, password } = req.body;
-    const user = await User.findOne({email});
-    if(!user) return res.status(401).send('The email dosent exist');
-    if(user.password !== password) return res.status(401).send("Wrong password");
+    console.log(email);
+    console.log(password);
+    var user = await Profesor.findOne({correo:email});
+    var tipo = "profesor";
+    if(!user)
+    {
+        user = await Alumno.findOne({correo:email});
+        if(!user) return res.status(200).json({status:'invalid email'});
+        tipo = "alumno";
+    }
+    if(user.password !== password) return res.status(200).json({status:'invalid password'});
 
     const token = jwt.sign({_id: user._id}, 'secretKey');
-    return res.status(200).json({token});
+    return res.status(200).json({token, status:tipo});
+});
 
+/* ¿Es un profesor? */
+router.post('/isProfesor', async (req, res) => {
+    const { token } = req.body;
+    if (token) {
+      jwt.verify(token, 'secretKey', async (err, decoded) => {      
+        if (err) {
+          return res.status(200).json({status:'invalid token'});  
+        } else {
+          /* decoded ejemplo: { _id: '5f17f186b9aaa14c109a31b4', iat: 1595404678 } */
+          console.log(decoded);
+          const user = await Profesor.findById(new ObjectId(decoded._id));
+          console.log(user);
+          if(user)
+          {
+            res.status(200).json({status:'ok'});
+          }
+          else
+          {
+            res.status(200).json({status:'invalid user'});
+          }
+        }
+      });
+    } else {
+        res.status(200).json({status:'invalid token'});
+    }
+});
+
+/* ¿Es un alumno? */
+router.post('/isAlumno', async (req, res) => {
+    const { token } = req.body;
+    if (token) {
+      jwt.verify(token, 'secretKey', async (err, decoded) => {      
+        if (err) {
+          return res.status(200).json({status:'invalid token'});   
+        } else {
+          /* decoded ejemplo: { _id: '5f17f186b9aaa14c109a31b4', iat: 1595404678 } */
+          console.log(decoded);
+          const user = await Alumno.findById(new ObjectId(decoded._id));
+          console.log(user);
+          if(user)
+          {
+            res.status(200).json({status:'ok'});
+          }
+          else
+          {
+            res.status(200).json({status:'invalid user'});
+          }
+        }
+      });
+    } else {
+        res.status(200).json({status:'invalid token'});
+    }
 });
 
 router.get('/task', (req, res) => {
