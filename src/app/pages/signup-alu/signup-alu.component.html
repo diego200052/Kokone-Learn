@@ -1,0 +1,111 @@
+<div class="container-fluid">
+    <br><br/>
+    <div class="row">
+      <div class="col-lg-4"  >
+        <br><br/>
+            <!--*************Muestra mensaje**************style="background-color:white"* -->
+            <div #alert class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Hola!</strong> Debes registrarte llenando el siguiente formato.
+            </div>
+
+        <img src=" data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIPEBUPEBAVFRUVFRUVFRgVFxUVFRUVFRUXFhUVFRUYHSggGBolHRcVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGBAQGi0fHx8tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMoA+gMBIgACEQEDEQH/xAAcAAEAAwADAQEAAAAAAAAAAAAAAQUGAgQHAwj/xABIEAABAwIEAwYCBgQKCwEAAAABAAIDBBEFEiExBkFREyIyYXGBBxQjQlKRobEzcsHRFRZDYmOCk7LC8SU0RFNUc4OSotLwJP/EABkBAQEBAQEBAAAAAAAAAAAAAAABAgMEBf/EACURAQEAAgICAgEEAwAAAAAAAAABAhEDEgQxIUFRBSIyYRMUsf/aAAwDAQACEQMRAD8A9uREUBERAREQEREBQpRBClEQEREBERARFCCUWex3jCmpH9j35pjb6KFud+ptrybz0Juqw8bVLbukweqEetnNs5/ldlhb79FNxZK2iKowDiSmrw7sHnMzxscCx7fVp/YrZESi6mIYlDTNzzysjbyL3Btz0F918cNxymqiW09RHIRuGuBPrbdBYolkVBERAREQEREBERAREQEREBERAREQEVdiuO01IL1FQyPyJ7x22aNTuOSzp45fPpQUE8/R7h2Ud9LauFyN+m3NNrps0WOyY1UbvpqVpJ2BlkAItbXQ9b6Li3gyeSxqcVqn6EERkRNsfTf3U2abCaZrBd7g0bakDXpqujVY9SxECSqhZfbNIwXtvz8wqGP4c0AFnskk/XleR9wIC7sHBOHM2o4/cE/mpurqO1/Gmh/42n/tY/3qr4n4xhipJH0lRFJN3WRhj2vIe85QbNJ21PsrRvDNEP8AYoP7Nv7kHDNEHB4o4Q5pDgQxosQbg6BN0+HV4V4diw6C7gDK4ZppDq5zjqRmOtl234tY91unmvpjDnFoAGm5/cqcrNr1+Pw45TeTqcU4QJ2/whSAR1UB7QOA/SBupY8DxafuWmwDFG1lNHUs2e25H2XDRzT5gghfLB2d11xofx5FUvwwDhRvaR3G1E4i21Zn1/8ALN9y1K8/LjJlZPpjPirVAYnH2rTJGyNhyZi24JcXDMNr6a+SruB6V9RibJqaIxxscXuAcXBjLEZcztXXVv8AF2kDa2CaVruyewNeWWv3HEuAJ0zZTpdZmilY3EYThxly9pHl7S2fU98HLoW2uueXtrH+LQ8N8QOihxJs9UQ8h3ZB7+8X98HICd/Dss/RcQ1ENA+nZK8dpN4sxuGhgzNadxckbLvcUPoRWVLZKeeNwe63ZvZlc77Tmvb3ATrpddebBX/wRHVhh0qHk6fybmtaHemZtvdTdXUfPCKuakqqY01V2hlLC9rS+wLnAOjeHeI25r38ryjgfEsOfWRMgoHslc099zy9rCBcloJNh5+a9XXTByz9iIi2wKFKIBREQEREBERARcZJA0FziABqSdAB5lYmfHarE3mHDPo4QcslU8dDqIRz05+fJTayLziDiqnorMe4vld4Yoxnkd/VG3uqV0OJ4ibvf8hB9lhzVDh/Od9T2srnh7hanoRmY0vlPjlkOaRx56nb0Cu7KL6Z7COC6OmOfsu1k3Mk30jyeuugPoFoQFKBNJtKIiqIRSiCFKIgghdWbDo36kWPlou2iNTK4+q+DoO4WNNtCAelxa6xWH10uCNbT1bA6lBOSoiae6XEk9uzqSdx+K3a+c8DZGlj2hzXCzgdQQeRCmjf5fKSKGpjGZrJY3AOFwHtcDsRfRfOhwenp9YaeKMnmxjWn7wLrJOL8Ckv3n4fI7zLqV7jy6sPT9u+4ZIHNDmm4IBB5EEXBVRiuMOIMMhm7KpphPKACQ2Jjy0EXF3Oty5KxwLi2hqoXlhEbImjOyRoaGsOg0Fxl5aLzHjCrngxepdTuc15IHdFyWujZewseinhekjmo6yFhe6qfEC2O2hZG9rzkPN2g09Fz7fLr1/bt6x87h9HG2cGCJkx7r2hrQ++uhaNV98S4jpKUtE9RGwuFwCbmx2Nhy814ljWMOmpKWkMDmfL5mlzrjMXbCxGnojoJZKyXPTPqXMu1zBmBFhkY7u3NhoU7/hJxz7e9UNdHOwSQyNew7Oabjz912FifhXg09JSvNQ0sMjw5rDu0BtrkcienkFtl0l252aol0RVBERAVNj3E9LQ2E8tnOF2saC6R3o0elrnRfbiTFRRUstS7XI24G13HRo+8hUfDOCtgj+eq/pKqUB73u1LLi4YwfVAFhp+SlrWOO3D+PTvEMLrDHfx5B4ftZd/ZW+FcV0lTG+Rkwb2QvK2TuPjH89p2XYgxhpNiCPNdPHOFqWuc2SVmrdy05TI3fI8jxNvY+ym2suO4/ymlD2cmOvzPzR4ex3db4X1LmnxHozp+/ba0lO2JgjjaGsaLNa3QAei5QwhjQxrQ1rQAANAANAAF9VIzRSiLSCIiAiIiCIiAiIgIiICIiD41lMyaN0UjQ5jwWuB2IO6xnDlQ7DKo4XO4mKTvUbzc6c4SeVraf5Lcqj4vwP52nLWnLKwiSF/NsjdR9+ylWKDing+pkrPn6CdschaGuzXGwtcEA3uLCxHJdXhr4fzwumnqKkdrLHIwGK92uk8Ty42ufQLT8GY2a2lD3jLKwmOZvSRuh+/f3V8p1ntrvfTy2LgDEJHxRVVWHwRua7xvcdOjXDQkab81ZcQ8D1Lqt1ZQVIhdJ4xdzSNACQW7g2GhXoCJ0h3qs4doJKanZFNMZntvmebkkkk211sNtVZoi1IzaIiKoIiIMz8SKIz4ZO0btaJOX8mQ47+QJ9l9oqoVNFDOzZzGO9O7Yj2P5K+kaHAgjQ6EeR5FYPDZP4GnNHUf6nM4mnkPhjc7UxPPLy/zWa6YZasv4WQC0eHxFsYDjc7+nkuhDhtpAb3buD16K3CmMd/J5ZlqQUoi08giIgIiICIiAihcZJQ0ZnEADck2A9SiuaLp0uKQTOLYp43kcmuaT9wK7iIIiICIiAiIgxNV/o7F2SDSGu7j+QbO3wu6a/tK2yzfH+G/M0Mgb44/poyNw6PXT2uFZcOYkKuliqB9dgJ8nWs4feCpFqyREWkEREBLoiAiIghUPHZjGHVJlYHDsyGggeM6MIvzDiD7K/WW+IAL4YIBa01XTsd+qHZ9P8AtUqz2usCpjDTQxE3LIo2knmQ0ArvBQFIUEoiKoIiFARZfFePKGmkMT5S5zTZ3ZtLg0jcE7XVrgePU9awvp5A63iFiHN/WadQm11VmiIiIKw3FVPDXtqmz1bo20pLWsa4NGYRh/aPbu++awHl5rcleQfFfh17Kg1zGExyBokI+o9osC7yIA16hZyvw3hN1g6ad0bmyRuLHtILSDYtPqvfeCMaNdRsmd4xdknTO3mPUWPuvz+vb/hbhr6egvILGV7pQDuGkBrb+obf3XPC/Lryz4bBEUFdnnSvjNO1o1Nl0a7EbEtZ7lVT3E6kknzWbk9XF49y+b8RdOxSMdT7LnDiMbjbNb1VAinZ3/1MGocA4W3BFvYrI/DRzmQ1FI7/AGepljbr9UnMB5b/AIq3wqsschOnJVHCTA3E8TA5vhPuWuJWtvHycdwtlbFERachFClAUXUogIiICzHF03/6cPito+qzX6dnG62n9b8Fp1mOMIx2+HzE+CrDbde0jcP8P4qX0s9tOoUoiCIiAujjk/Z00slyMsbiSNwLakeYGq7y+c8Ie1zHC7XAtI6gixRXgvGzaETM/g83bk79i4jNfQ3dre265/DvEnU+Iw2PdkPZPHUO2PsQFw4m4RqKKZzeye+Mn6N7GlwLeQNtirz4dcHzvqWVc8bo44jmbnBDnuG1mnWw6rjq9ne2dXsS4OkA3I+9c15HisImr6ltWSZGyfRgucLRW7hjAP4jmumWXWM8HDeXPrLp6NT8SUkk/wAsypjdLqMoOpI3AOxOitHxhwIcAQdCCLg+oXj76Vono6eFoD/mIy2w1a1hu9xPSy9huphl2jXk8H+HPrvaoj4Xomv7RtJEHXvfKN+oGwVuAuvPWxRuYx8jWueSGBxALiOTeq7C1HC0VZitXYZG7nf0VjK/KCeguszI8uJceZuplXo8fj7Zbv04oiLD6QiIgmI2cPULr8IvzYliRG2eEe4a4FdqBt3j8fQbrr/DW74qipJP09VK8XFu62zWkddB+C1Hi8v6bBERdHhEREBQpRAREQFl/iI21LHPreCpp5dOgkDTfys4rUKt4koPmaOeDm+NwG471rt1HmApVixBvspVLwfiHzNDBKfFkDX30IezuuBHLUFXDjZTYm6KpqsUsbMHuum6ukP1yp2ejHxs8pv00V0WfZiEg+tf1XepsVadHi3nyVlTLx88f7WSKGuB1C5KuAqrG+HqeuaBURhxHhcLte39Vw1CpcT48ipqqWlfTyuMeXvRgOBzNDtri26qsS4/mlGWkpiz+knI08wxu59VnLPGe3bi4OXOzpK6EFRTYNiz2PL3xmFg7V5L3QudfQkfVIt57LT1/wAQaGNt45e3f9VkQJJPQm1gvOpZRGSZHGSWQ5nc3SO9On5LnT4bNJqbQN6MAL/c7BcP8v4j6d/Tt675fP3HLGaiWvkdUVFmHLaFgOkIvcEH7V7XK9S4OxQ1dDDO7xFln+bmnKT72v7ry3EMLp4YnSyBzyBpncSS7kB7r03gXDjTYfBE8WdkzOB5F5Lre11rittrh5/Hhx4444zWlpiRtE72/NZ9aOtizxub5flqs4umTHia60REWXrEULk0DdzmtHMuIAA9SiWyTddLiGs+WoZpvrOb2Ufm+Tui34rRcLYb8pRw0/NjBm/WPef+JKwWP8SUkmIU8Tph8tTHtXOaDIJJgO62zQb2vv6q/f8AEqiBOVtQ4dWxGx8xcgrUsfM5crnWzRZ3DON6CocGMqA15tZsgMZueQzAAn0WiW9uNmhERVBERAREQEREGR4bcKSuqcPOjXn5qDS3df8ApWt8g5X+LylsdhzNlU8a4e9zGVtP+npXGRo/3kdvpIvcfiF2HVzKyljqYjdjrH05EHzB0WK68WrnNuiiIsPrCIiDs0VYYz1HT9yv4pA4Bw2Ky6sMJqLOyHY7eq1K8nkcUs7RmPiFgEglGIwNL7Nyzsb4i0bPA525+ix768OaOxOZzjZo538xysvcSs9ivBNFVOzvhyvO7oyYz720/BYz4u13F8X9Rz4MLh7n/GDw3DhD33nNIdXPP5DoFFZi8UfdDs7jsyPvOJ9Ata34a0P1jO4dHSm34BX2E8PUtJ+ggYw/atd59XHVZnDft3v6pqfsxY7hrhSWpkbVV7cjGnNFBzvyfJ+5eiKUXbHGY+ny+Xly5Mu2SFVV2G3OZnuFar5VNQ2JhkkcGtaLuJNgB1KthhncLuM6+Bzd2keyqMVx6CmORzi6Q7RsGZ5PSw2919XYrV4s4sobwUoJDqhw78ltCIhy9fyWgwDhimoheJl3nxSP70jjzJcdvZZ6vTfKuvTKU9HidbqGto4zzf35SP1eXvZWdL8Paa+eqfLUv/pHENv5MatiQlk6uGfNll7qvosGpoBaKniZ+qxv52XfAHRTZcSbblXWnL2r8WwKmq2lk8LHX52AcPMOGoKz/Cc0lFVPwmZ5e0M7Wme61zFexjPUj9h8lpW1haCZG2AOltbrNV0va45StjJvHTTPkIAPdfbKHX2BNvvCNdbPbZoiLbAiIgIiICIiAsXiUbsLnfM1pNFObzga/LyuP6UN5MOl+i2i4yRhwLXAEEEEHUEHcEcwpZtZdMw4DcEFpF2kahwOxB5hcVX4hg8+G3fSNdPSklzoN3wDcugJ8Td+76L64diUVS3PC8OHMbOaejmnUFcq+nxcszn9u2iIjuL60x77fUL5Lt4bAXPB5DX35IxyWTG7X4UqApXV8gREVQREUBZXGcAmxCpy1DstHHYiNpOad9r5nkbNB0t5LVIivnDC1jQ1gDWgAADQADkAualQiClcXOAFybAdVm8R44o4ndmx7p5NuzgaZHX2tcd3pzRWlVRjLDcO+qBrrYDzJVKMVxWr/wBXo2UzOT6k3fz/AJMajbmOakcD9uc2IVk1SebAeyi5/Uab9OfJT23hl0u3xqOK2lopaOP5ufbu6xR32Mj9rBWfCfD7qbPUVDhJVTWMrwBZo5RsNvCP2DorrD8Pip2COCNsbRyaLe56nzK7STFMstiIi0wIiICIiAiIgIiICz+N8IwVT+2aXQz8pYjldpsHDZw9VoEUs2stnphJaHEqbR0TKxmlnRkRS+7Hd0+y+X8Yqdpy1DZ6Y2ue2hkaLXtfMLi1+a9AUOaCLEAjodQs9HaeRnPtkKTGsOdr8/CfIvDP71lax8RUDRYVtMB/zo//AGXdqsGpprGWmhfbbNGx1r72uFmeMcBpWwxxx00EZmqIonPEbA5rHEl2V1u6SG2v5p1Zy5Ln7q2k4ww9m9bD7PDv7t1zwriqkq5ewglLn5S7wuAIBANiRY7hfZ9FS0zDIYoY2NFy4tY0ADqbLCVfED5K2nxFkeWiZL8s19rGTtbh8lraMuG28x9zbOnp91K4hclpkREQEREEKi4i4hFJlijYZaiXSKJu7v5zj9Vg5lXUsoYC52gAJPoBcrMcF0xnMmKS6vqDaIb9nTtNo2joTufZQdeLhaorfpMUqXHW4p4DkhaOjju8/wD11psMwqClZ2cELI29Gi2/U7n3XcspV0bQApRFUQpREBERAREsgIiICIiAiIgIiICIiAujjOFRVkRhnbmaSDoSC1w2c1w1BHVd5EGQi+H9OXNdUT1NQG2LWTSZmCx+yALjyKtuJMEbVUUlI1rW9y0QAADHtF47DkAQFcoppds5wNjRrKVue4miPZTNOjmvZpcjzAv960aymNcKSOqDW0FT8tM4Wlu3PHLtYub1t5fduuNFwlOGufPiNQZ3vzF8TsjANO62J2ZpGh1tzU+V+Gsuiy5wfE2D6PE2SG/8tTt29WO1O3Jc2UuLDepoz/0ZR/jT5NNLdFmZKPFnafN0rRzLYXkgc7ZnWuulOzFaF5lDhiEbgA5lmQSMN92NF7jrqU2mlhx5VFlI6FhtJUObTx9byGxt6Nur6jpxFGyJosGNawAX2aLDf0WVwnCaqrqmV9e1sQiB7Cnac+QuFi+R32rfnystgkWiKFK0yIiICIiAiIgIiICIhQEQogIiICIhQEREBERAREQFCkIUBEKgoJUKUCAiFEBFCIJRQpCAiIEBFHVSgIiIP//Z  " 
+        alt="" /> 
+      </div>
+
+
+      <div class="col-lg-8"  >
+        <h1><span style="color: darkgreen; font-family: Verdana; font-size:x-large;">
+            Registro alumnos
+            </span></h1>    
+            <!--  #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+-->
+            <form class="was-validated" #userRegistrationForm="ngForm">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="validationServer01">Nombre</label>
+                        <input type="text" class="form-control browser-default" id="validationServer01" placeholder="First name" required #n>
+                        <div class="valid-feedback"> Parece ser correcto</div>
+                        <div class="invalid-feedback">Necesitas ingresar tu nombre </div>
+                    </div>
+                    
+                    <div class="col">
+                        <label for="validationServerUsername">Username</label>
+                        <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                        </div>
+                        <input type="text" class="form-control browser-default" id="validationServerUsername" placeholder="Username" 
+                                aria-describedby="inputGroupPrepend3" required  #username>
+                                <div class="valid-feedback"> Parece ser correcto</div>
+                                <div class="invalid-feedback">Es necesario ingresar un nombre de usuario </div>
+                        </div>
+                    </div>
+                </div>
+             <div class="form-row">
+                <div class="col">
+                    <label for="validationServer02">Apellido Paterno</label>
+                    <input type="text" class="form-control browser-default" id="validationServer02" 
+                            placeholder="Apellido Paterno"   #apPaterno required >
+                            <div class="valid-feedback"> Parece ser correcto</div>
+                            <div class="invalid-feedback">Ingresa tu apellido paterno</div>
+                </div>
+                <div class="col">
+                    <label for="validationServer02">Contraseña</label>
+                    <input type="password" pattern=".{6,}" class="form-control browser-default" id="validationServer02" placeholder="Ingresa una contraseña" required #contr>
+                    <div class="valid-feedback"> Parece ser correcto</div>
+                    <div class="invalid-feedback">Ingresa una contraseña valida (min. 6 caracteres)</div>
+                </div>
+
+            </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="validationServer02">Apellido Materno</label>
+                        <input type="text" class="form-control browser-default" id="validationServer02" placeholder="Apellido Materno"
+                                required   #apMaterno >
+                                <div class="valid-feedback"> Parece ser correcto</div>
+                                <div class="invalid-feedback">Ingresa tu apellido materno</div>
+                    </div>
+                <div class="col">
+                    <label for="validationServer03">Escuela</label>
+                    <input type="text" class="form-control browser-default" id="validationServer03" placeholder="Ingresa el nombre de tu escuela"
+                             required   #escuela>
+                    <div class="invalid-feedback">
+                    Selecciona el nombre de tu escuela, si aùn no aparece, espera a que tu profesor registre el curso.
+                    </div>
+                    <div class="valid-feedback"> Parece ser correcto</div>
+                </div>
+            </div>
+         <div class="form-row">
+                <div class="col">
+                    <label for="validationServer04">Correo</label>
+                    <input type="text" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control browser-default" id="validationServer04" placeholder="Ingresa tu correo electronico"
+                             required  #correo>
+                    <div class="invalid-feedback">  Ingresa un correo valido. </div>
+                    <div class="valid-feedback"> Parece ser correcto</div>
+                </div>
+            </div>
+            
+            <br><br/>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox mb-3">
+                      <input type="checkbox" class="custom-control-input browser-default" id="customControlValidation1" required>
+                      <label class="custom-control-label" for="customControlValidation1">Aceptar terminos y condiciones</label>
+                      <div class="invalid-feedback">Necesitas aceptar </div>
+                    </div>
+                </div>
+                
+                <button [disabled]="!userRegistrationForm.valid" class="btn btn-primary" type="submit" (click)="guardar(n.value, apPaterno.value, apMaterno.value, username.value,
+                contr.value, escuela.value, correo.value)">Registrarse!</button>
+            </form>
+
+      </div>
+      
+    </div>
+  </div>
+
+  <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
+    <path id="Path_39" data-name="Path 39" d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z" transform="translate(142.69 -634.312)" fill="#eee"/>
+  </svg>

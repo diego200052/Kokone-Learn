@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <br><br/>
+        <h1><span style="color: rgb(0, 141, 129); font-family: Verdana; font-size:x-large;">
+            Registro profesores
+            </span></h1>    
+            <!--  #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+-->
+            <form class="was-validated"  #userRegistrationForm="ngForm" >
+
+            <div class="form-row">
+                <div class="col-md-10">
+                        <div class="form-row">
+                            <label for="validationServer01">Nombre</label>
+                            <input type="text" class="form-control browser-default" id="validationServer01" placeholder="First name" required #n>
+                            <div class="valid-feedback"> Parece ser correcto</div>
+                            <div class="invalid-feedback">Ingresa tu nombre* </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="validationServer02">Apellido Paterno</label>
+                            <input type="text" class="form-control browser-default" id="validationServer02" 
+                                    placeholder="Apellido Paterno"   #apPaterno required >
+                                    <div class="valid-feedback"> Parece ser correcto</div>
+                                 <div class="invalid-feedback">Es necesario ingresa tu apellido paterno</div>
+                        </div>
+                </div>
+                    <div class="col-md-2">
+                        <img src="https://www.gifsanimados.org/data/media/385/maestro-y-profesor-imagen-animada-0090.gif " 
+                        alt="" /> 
+                    </div>
+            </div>
+
+                <div class="form-row">
+                    <div class="col">
+                        <label for="validationServer02">Apellido Materno</label>
+                        <input type="text" class="form-control browser-default" id="validationServer02" placeholder="Apellido Materno"
+                                required   #apMaterno >
+                                <div class="valid-feedback"> Parece ser correcto</div>
+                                <div class="invalid-feedback">Ingresa tu apellido materno</div>
+                    </div>
+                    
+                    <div class="col">
+                        <label for="validationServerUsername">Username</label>
+                        <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                        </div>
+                        <input type="text" class="form-control browser-default" id="validationServerUsername" placeholder="Username" 
+                                aria-describedby="inputGroupPrepend3" required  #username>
+                                <div class="valid-feedback"> Parece ser correcto</div>
+                                <div class="invalid-feedback">Es necesario ingresar un nombre de usuario* </div>
+                        </div>
+                    </div>
+                </div>
+             <div class="form-row">
+                <div class="col">
+                        <label for="validationServer04">Correo</label>
+                        <input type="text" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control browser-default" id="validationServer04" placeholder="Ingresa tu correo electronico"
+                                required  #correo>
+                        <div class="invalid-feedback">  Ingresa un correo valido. </div>
+                        <div class="valid-feedback"> Parece ser correcto</div>
+                </div>
+                <div class="col">
+                    <label for="validationServer02">Contraseña</label>
+                    <input type="password" pattern=".{6,}" class="form-control browser-default" id="validationServer02" placeholder="Ingresa una contraseña" required #contr>
+                    <div class="valid-feedback"> Parece ser correcto</div>
+                    <div class="invalid-feedback">Ingresa una contraseña valida (min. 6 caracteres)</div>
+                </div>
+
+            </div>
+            
+            <br><br/>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox mb-3">
+                      <input type="checkbox" class="custom-control-input browser-default" id="customControlValidation1" required>
+                      <label class="custom-control-label" for="customControlValidation1">Aceptar terminos y condiciones</label>
+                      <div class="invalid-feedback">Necesitas aceptar </div>
+                    </div>
+                </div>
+                
+                <button [disabled]="!userRegistrationForm.valid" class="btn btn-primary" type="submit" (click)="guardar(n.value, apPaterno.value,
+                                     apMaterno.value, username.value, contr.value, correo.value)">Registrarse!</button>
+            </form>
+
+  </div>
+  <br><br/>
+
