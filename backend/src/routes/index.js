@@ -1,8 +1,10 @@
 const { Router } = require('express');
 var ObjectId = require('mongoose').Types.ObjectId; 
 const router = Router();
+
 /* Biblioteca de autenticación vía tokens */
 const jwt = require('jsonwebtoken');
+
 /* Bibliotecas para api de imágenes */
 const multer = require('multer');
 const path = require('path');
@@ -11,13 +13,14 @@ const { v4: uuidv4 } = require('uuid');
 /* Modelos de la base de datos */
 const Profesor = require('../models/profesor');
 const Alumno = require('../models/alumno');
+const Curso = require('../models/curso');
 
 /* Configuracion de multer */
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, path.join(__dirname, '../public/images'))
     },
-    //Esta opcion es para decirle con que nombre guardar la imagen en el servidor
+    /* Esta opción es para decirle con que nombre guardar la imagen en el servidor */
     filename: (req, file, cb) =>{
         cb(null, uuidv4() + path.extname(file.originalname)); //El archivo se guardara con un UUID unico y su extension
     }
@@ -73,6 +76,33 @@ router.post('/signin', async (req, res) => {
 });
 
 /* ¿Es un profesor? */
+async function isProfesor(req, res, next){
+    const { token } = req.query;
+    if (token) {
+      return await jwt.verify(token, 'secretKey', async (err, decoded) => {      
+        if (err) {
+          return res.status(200).json({status:'invalid token'});  
+        } else {
+          /* decoded ejemplo: { _id: '5f17f186b9aaa14c109a31b4', iat: 1595404678 } */
+          console.log(decoded);
+          const user = await Profesor.findById(new ObjectId(decoded._id));
+          console.log(user);
+          if(user)
+          {
+            //next();
+            console.log("devolviendo ID...");''
+            return user._id;
+          }
+          else
+          {
+            return res.status(200).json({status:'invalid user'});
+          }
+        }
+      });
+    } else {
+        return res.status(200).json({status:'invalid token'});
+    }
+}
 router.post('/isProfesor', async (req, res) => {
     const { token } = req.body;
     if (token) {
@@ -100,6 +130,31 @@ router.post('/isProfesor', async (req, res) => {
 });
 
 /* ¿Es un alumno? */
+function isAlumno(req, res, next){
+    const { token } = req.body;
+    if (token) {
+      jwt.verify(token, 'secretKey', async (err, decoded) => {      
+        if (err) {
+          return res.status(200).json({status:'invalid token'});   
+        } else {
+          /* decoded ejemplo: { _id: '5f17f186b9aaa14c109a31b4', iat: 1595404678 } */
+          console.log(decoded);
+          const user = await Alumno.findById(new ObjectId(decoded._id));
+          console.log(user);
+          if(user)
+          {
+            next();
+          }
+          else
+          {
+            res.status(200).json({status:'invalid user'});
+          }
+        }
+      });
+    } else {    console.log("smite");
+        res.status(200).json({status:'invalid token'});
+    }
+}
 router.post('/isAlumno', async (req, res) => {
     const { token } = req.body;
     if (token) {
@@ -126,6 +181,20 @@ router.post('/isAlumno', async (req, res) => {
     }
 });
 
+/* Manejo de peticiones en la base de datos */
+router.get('/cursos' , async (req, res) => {
+    /* Si no es profesor no continua */
+    const idProfesor = await isProfesor(req, res); //idProfesor = _id   
+
+    /* Obtiene todos los cursos asociados a la id del profesor y lo devuelve */
+    Curso.find({ idProfesor: new ObjectId(idProfesor) }).then((resJSON) => {
+        const resultado = {status: "ok", cursos: resJSON}
+        res.status(200).json(resultado);
+    });
+})
+
+
+/* Pruebas */
 router.get('/task', (req, res) => {
     res.json([{
             _id: 1,
@@ -146,7 +215,6 @@ router.get('/task', (req, res) => {
             date: '2020-07-20T04:13:56.063Z'
         }]);
 });
-
 router.get('/private-task', verifyToken , (req, res) => {
     res.json([{
         _id: 1,
@@ -168,7 +236,7 @@ router.get('/private-task', verifyToken , (req, res) => {
         }]);
 })
 
-//Procesador de imagenes
+/* Procesador de imágenes */
 const upload = multer({
     storage, //Carga la configuracion que establecimos anteriormente
     dest: path.join(__dirname, '../public/images'),//Definimos la ruta en donde se subiran las imagenes
@@ -184,6 +252,7 @@ const upload = multer({
     }
 }).single('image'); //.single ('Nombre del formulario html name="image"') //single solo permite la subida de 1 imagen
 
+/* Subir una imagen */
 router.post('/upload'/*, verifyToken */, (req, res) => {
     upload(req, res, function (err) {
         if (err instanceof multer.MulterError) {
