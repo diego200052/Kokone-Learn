@@ -8,6 +8,7 @@ import { SelplantillaComponent } from './components/selplantilla/selplantilla.co
 import { SignupAluComponent } from './pages/signup-alu/signup-alu.component';
 import { SignupProfComponent } from './pages/signup-prof/signup-prof.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
+import { CursosAlumnoComponent } from './pages/cursos-alumno/cursos-alumno.component';
 
 /* Páginas del sitio */
 import { Error404Component } from './pages/error404/error404.component';
@@ -42,6 +43,9 @@ const routes: Routes = [
 
   /* ******** Pagina Log In ******** */
   { path: 'login', component: LogInComponent },
+  /* ******** Pagina Cursos Alu ******** */
+  { path: 'cursosAlumno', component: CursosAlumnoComponent },
+
 
   
   /* Página principal */

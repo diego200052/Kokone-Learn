@@ -28,7 +28,8 @@ body {
 }
 /* Menu - profile */
 .bg-card-user {
-	background: rgba(236, 64, 64, 0.5);
+	background-image: url("https://media3.giphy.com/media/rc08oKEhlpUrK/source.gif");
+	/*background: rgba(236, 64, 64, 0.5);*/
 	padding: 15px 0;
 }
 .truncate >img {

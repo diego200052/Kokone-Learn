@@ -1,3 +1,11 @@
 .brand-logo img {
     height: 60px;
 }
+
+.nav-wrapper {
+	background-image: url("https://i.pinimg.com/originals/e1/9f/c4/e19fc4f92bc65978ceac0213a1abaf65.gif");
+    /*background-color: #008547 !important;*/
+    font-size: 14px;
+    font-weight: bold;
+    }
+    
