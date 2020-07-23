@@ -12,8 +12,6 @@ import { CursosAlumnoComponent } from './pages/cursos-alumno/cursos-alumno.compo
 
 /* Páginas del sitio */
 import { Error404Component } from './pages/error404/error404.component';
-import { AlumnoComponent } from './pages/alumno/alumno.component';
-import { ProfesorComponent } from './pages/profesor/profesor.component';
 
 /* Guard de autenticación */
 import { AuthenticationGuard } from './authentication.guard'
@@ -35,18 +33,17 @@ const routes: Routes = [
   { path: 'regprofe', component: SignupProfComponent },
   { path: 'regalumno', component: SignupAluComponent },
 
-  /* Páginas de acceso al Alumno */
-  { path: 'alumno', component: AlumnoComponent, canActivate: [AuthenticationGuard], data: {role: 'alumno'} },
-
   /* Páginas de acceso al Profesor */
   /*{ path: 'profesor', component: ProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },*/
   { path: 'profesor/cursos', component: CursosProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
   { path: 'profesor/cursos/:idCurso', component: CursoEspProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
-  { path: 'profesor/cursos/:idCurso/clase/:idClase/agregarDiapositiva', component: DiapositivaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
+  { path: 'profesor/cursos/:idCurso/clase/:idClase/agregarDiapositiva/:idPlantilla', component: DiapositivaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
   { path: 'profesor/cursos/:idCurso/clase/:idClase/seleccionarPlantilla', component: SelplantillaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
 
   /* ******** Pagina Log In ******** */
   { path: 'login', component: LogInComponent },
+
+  /* Páginas de acceso al Alumno */
   /* ******** Pagina Cursos Alu ******** */
   { path: 'cursosAlumno', component: CursosAlumnoComponent },
   

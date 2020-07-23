@@ -14,6 +14,8 @@ const { v4: uuidv4 } = require('uuid');
 const Profesor = require('../models/profesor');
 const Alumno = require('../models/alumno');
 const Curso = require('../models/curso');
+const Clase = require('../models/clase');
+const Diapositiva = require('../models/diapositiva');
 
 /* Configuracion de multer */
 const storage = multer.diskStorage({
@@ -230,13 +232,70 @@ router.post('/addCurso' , async (req, res) => {
     const idProfesor = await isProfesor(req, res); //idProfesor = _id   
     //console.log(idProfesor)
 
-    /* Obtiene todos los cursos asociados a la id del profesor y lo devuelve */
+    /* Crea un nuevo curso con los datos recibidos */
     Curso.create({idProfesor:new ObjectId(idProfesor), nombreCurso:nombreCurso, nivel:nivel, escuela:escuela, descripcion:descripcion, password:password}).then((resJSON) => {
         const resultado = {status: "ok", curso: resJSON}
         res.status(200).json(resultado);
     });
 })
 
+/* Obtiene todas las clases de un curso */
+router.get('/clases' , async (req, res) => {
+    const { idCurso } = req.query;
+
+    /* Si no es profesor no continua */
+    const idProfesor = await isProfesor(req, res); //idProfesor = _id   
+
+    /* Obtiene todos los cursos asociados a la id del profesor y lo devuelve */
+    Clase.find({ idCurso: new ObjectId(idCurso) }).then((resJSON) => {
+        const resultado = {status: "ok", clases: resJSON}
+        res.status(200).json(resultado);
+    });
+})
+
+/* Guarda una nueva clase asociado a un curso*/
+router.post('/addClase' , async (req, res) => {
+    const { idCurso, nombreClase, descripcion } = req.body;
+
+    /* Si no es profesor no continua */
+    const idProfesor = await isProfesor(req, res); //idProfesor = _id   
+    //console.log(idProfesor)
+
+    /* Crea una nueva clase con los datos recibidos */
+    Clase.create({idCurso:new ObjectId(idCurso), nombreClase:nombreClase, descripcion:descripcion}).then((resJSON) => {
+        const resultado = {status: "ok", clase: resJSON}
+        res.status(200).json(resultado);
+    });
+})
+
+/* Obtiene todas las diapositivas de una clase */
+router.get('/diapositivas' , async (req, res) => {
+    const { idClase } = req.query;
+
+    /* Si no es profesor no continua */
+    const idProfesor = await isProfesor(req, res); //idProfesor = _id   
+
+    /* Obtiene todos los cursos asociados a la id del profesor y lo devuelve */
+    Diapositiva.find({ idClase: new ObjectId(idClase) }).then((resJSON) => {
+        const resultado = {status: "ok", diapositivas: resJSON}
+        res.status(200).json(resultado);
+    });
+})
+
+/* Guarda una nueva clase asociado a un curso*/
+router.post('/addDiapositiva' , async (req, res) => {
+    const { idClase, tipoPlantilla, titulo, urlImagen, contenido } = req.body;
+
+    /* Si no es profesor no continua */
+    const idProfesor = await isProfesor(req, res); //idProfesor = _id   
+    //console.log(idProfesor)
+
+    /* Crea una nueva clase con los datos recibidos */
+    Diapositiva.create({idClase:new ObjectId(idClase), tipoPlantilla:tipoPlantilla, titulo:titulo, urlImagen:urlImagen, contenido:contenido}).then((resJSON) => {
+        const resultado = {status: "ok", diapositiva: resJSON}
+        res.status(200).json(resultado);
+    });
+})
 
 /* Pruebas */
 router.get('/task', (req, res) => {

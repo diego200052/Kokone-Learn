@@ -9,8 +9,6 @@ import { ComponentsModule } from '../components/components.module';
 /* Páginas del sitio */
 import { HomeComponent } from './home/home.component';
 import { Error404Component } from './error404/error404.component';
-import { ProfesorComponent } from './profesor/profesor.component';
-import { AlumnoComponent } from './alumno/alumno.component';
 import { SignupAluComponent } from './signup-alu/signup-alu.component';
 import { SignupProfComponent } from './signup-prof/signup-prof.component';
 import { LogInComponent } from './log-in/log-in.component';
@@ -20,21 +18,23 @@ import { CursosProfesorComponent } from './cursos-profesor/cursos-profesor.compo
 import { CursosAlumnoComponent } from './cursos-alumno/cursos-alumno.component';
 import { CursoVistaComponent } from './curso-vista/curso-vista.component';
 import { CursoEspProfesorComponent } from './curso-esp-profesor/curso-esp-profesor.component';
+import { CursoEspAlumnoComponent } from './curso-esp-alumno/curso-esp-alumno.component';
+import { EstudioAlumnoComponent } from './estudio-alumno/estudio-alumno.component';
 
 @NgModule({
   declarations: [
     /* Declaración de componentes dentro de la carpeta pages */
     HomeComponent,
     Error404Component,
-    ProfesorComponent,
-    AlumnoComponent,
     SignupAluComponent,
     SignupProfComponent,
     LogInComponent,
     CursosProfesorComponent,
     CursoVistaComponent,
     CursosAlumnoComponent,
-    CursoEspProfesorComponent
+    CursoEspProfesorComponent,
+    CursoEspAlumnoComponent,
+    EstudioAlumnoComponent
   ],
   imports: [
     /* Módulos de biblioteca */

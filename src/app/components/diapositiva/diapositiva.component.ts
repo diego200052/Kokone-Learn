@@ -1,24 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 //import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { TasksService } from '../../services/tasks.service';
 @Component({
   selector: 'app-diapositiva',
   templateUrl: './diapositiva.component.html',
   styleUrls: ['./diapositiva.component.css']
 })
 export class DiapositivaComponent implements OnInit {
-
-  /*items: string[] = [
-    'Carrots',
-    'Tomatoes',
-    'Onions',
-    'Apples',
-    'Avocados'
-  ];*/
 
   public totalCountTitulo: number = 0 ;
   public totalCountTexto: number = 0 ;
@@ -158,9 +152,23 @@ export class DiapositivaComponent implements OnInit {
   public archivoCargado:boolean = false;
   public imageURL:string = "http://localhost:3000";
 
+  public cursoID:string = "";
+  public claseID:string = "";
+  public tipoPlantilla:string = "";
+  public diapositiva = {
+    idClase: "", /* Referencia al documento clase */
+    tipoPlantilla: "",
+    titulo: "",
+    urlImagen: "",
+    contenido: ""
+  };
+
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    public router: Router,
+    private tasksService: TasksService
   ) { }
 
   fileProgress(event) {
@@ -189,6 +197,16 @@ export class DiapositivaComponent implements OnInit {
     this.formTitulo = this.formBuilder.group({
       editorTituloName: ['', Validators.required]
     });
+
+    this.route.params.subscribe(params => {
+
+      /* Recibe el parámetro idCurso, idClase e idPlantilla desde la URL */
+      this.cursoID = params['idCurso'];
+      this.claseID = params['idClase'];
+      this.tipoPlantilla = params['idPlantilla'];
+
+    });
+
     console.log(this.editorTitulo);
   }
 
@@ -242,5 +260,27 @@ export class DiapositivaComponent implements OnInit {
 		const parser = new DOMParser();
 		const html = parser.parseFromString(s, 'text/html');
 		return html.body.textContent;
-	}
+  }
+
+  guardarDiapositiva()
+  {
+    /* Toma los datos introducidos por el profesor */
+    this.diapositiva.idClase = this.claseID;
+    this.diapositiva.tipoPlantilla = this.tipoPlantilla;
+    this.diapositiva.titulo = this.formTitulo.value.editorTituloName;
+    this.diapositiva.urlImagen = this.imageURL;
+    this.diapositiva.contenido = this.form.value.editorTextoName;
+
+    console.log(this.diapositiva)
+    
+    /* Guarda los datos de la diapositiva en la base de datos */
+    this.tasksService.crearDiapositiva(this.diapositiva)
+    .subscribe(
+      res =>{
+        console.log(res)
+        /* Redirige a la página de cursos */
+        this.router.navigate(['profesor/cursos/'+this.cursoID]);
+    },
+      error => console.log(error))
+  }
 }

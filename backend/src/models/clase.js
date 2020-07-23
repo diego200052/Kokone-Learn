@@ -9,4 +9,4 @@ const claseSchema = new Schema({
     timestamps: true
 });
 
-module.exports = model('clase', claseSchema, 'clase');
+module.exports = model('clases', claseSchema, 'clases');

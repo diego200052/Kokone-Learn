@@ -33,6 +33,48 @@ export class TasksService {
     });
   }
 
+  /* Obtener todas las clases asociados a un curso */
+  getClases(cursoID){
+    return this.http.get<any>(this.URL+ '/clases', {
+      params: {
+        token : this.getToken(),
+        idCurso: cursoID
+      }
+    });
+  }
+
+  /* Crear un nuevo curso asociado a un profesor */
+  crearClase(clase){
+    return this.http.post<any>(this.URL+ '/addClase', {
+      idCurso: clase.idCurso,
+      nombreClase: clase.nombreClase,
+      descripcion: clase.descripcion,
+      token: this.getToken()
+    });
+  }
+
+  /* Obtener todas las diapositivas asociados a una clase */
+  getDiapositivas(claseID){
+    return this.http.get<any>(this.URL+ '/diapositivas', {
+      params: {
+        token : this.getToken(),
+        idClase: claseID
+      }
+    });
+  }
+
+  /* Crear una nueva diapositiva asociado a una clase */
+  crearDiapositiva(diapositiva){
+    return this.http.post<any>(this.URL+ '/addDiapositiva', {
+      idClase: diapositiva.idClase,
+      tipoPlantilla: diapositiva.tipoPlantilla,
+      titulo: diapositiva.titulo,
+      urlImagen: diapositiva.urlImagen,
+      contenido: diapositiva.contenido,
+      token: this.getToken()
+    });
+  }
+
   /* Obtener el token del usuario almacenado en su navegador */
   getToken():string{
     return localStorage.getItem('token')
