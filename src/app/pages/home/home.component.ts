@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
           {
             duration:2000,
             indicators:false,
-            interval: 2000
+            interval: 4000
           }
         );
         $('.parallax').parallax();

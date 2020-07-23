@@ -1,20 +1,18 @@
 .brand-logo img {
-   height: 80px;
-} 
+   height: 70px;
 
-.brand-logo{
     margin-left: 50px;
     /* padding-left: 20px; */
-    padding-top: 10px;
+    margin-top: 15px;
 }
 
 .nav-wrapper {
 	/* background-image: url("https://i.pinimg.com/originals/e1/9f/c4/e19fc4f92bc65978ceac0213a1abaf65.gif"); */
     /*background-color: #008547 !important;*/
-    background-color: #ea7362;
-    /* font-size: 60px; */
+    background-color: #ab47bc;
+        /* font-size: 60px; */
     font-weight: bold;
-    height: 190%;
+    height: 170%;
     /* font-family: 'Fredoka One', cursive; */
 }
 
