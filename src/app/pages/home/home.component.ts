@@ -14,10 +14,20 @@ export class HomeComponent implements OnInit {
     (function ($) {
       $(document).ready(function(){
         $('.carousel').carousel();
-        $('.slider').slider();
+        $('.slider').slider(
+          {
+            duration:2000,
+            indicators:false,
+            interval: 2000
+          }
+        );
         $('.parallax').parallax();
         $(".dropdown-trigger").dropdown();
-
+        $('.tabs').tabs({
+          duration: 800
+        });
+         $('.collapsible').collapsible();
+         $('.materialboxed').materialbox();
       });
     })(jQuery);
   }
