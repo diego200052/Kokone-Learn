@@ -35,7 +35,7 @@ export class SignupProfComponent implements OnInit {
           res =>{
             console.log(res)
             localStorage.setItem('token', res.token);
-            this.router.navigate(['/profesor']);
+            this.router.navigate(['/profesor/cursos']);
           },
           err => console.log(err)
         )

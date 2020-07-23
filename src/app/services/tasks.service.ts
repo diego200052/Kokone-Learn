@@ -21,6 +21,18 @@ export class TasksService {
     });
   }
 
+  /* Crear un nuevo curso asociado a un profesor */
+  crearCurso(curso){
+    return this.http.post<any>(this.URL+ '/addCurso', {
+      nombreCurso: curso.nombreCurso,
+      nivel: curso.nivel,
+      escuela: curso.escuela,
+      descripcion: curso.descripcion,
+      password: curso.password,
+      token: this.getToken()
+    });
+  }
+
   /* Obtener el token del usuario almacenado en su navegador */
   getToken():string{
     return localStorage.getItem('token')

@@ -77,30 +77,57 @@ router.post('/signin', async (req, res) => {
 
 /* ¿Es un profesor? */
 async function isProfesor(req, res, next){
+    console.log(req.query)
+    console.log(req.body)
+    /* Obtiene el token mediante GET */
     const { token } = req.query;
     if (token) {
-      return await jwt.verify(token, 'secretKey', async (err, decoded) => {      
-        if (err) {
-          return res.status(200).json({status:'invalid token'});  
-        } else {
-          /* decoded ejemplo: { _id: '5f17f186b9aaa14c109a31b4', iat: 1595404678 } */
-          console.log(decoded);
-          const user = await Profesor.findById(new ObjectId(decoded._id));
-          console.log(user);
-          if(user)
-          {
-            //next();
-            console.log("devolviendo ID...");''
-            return user._id;
-          }
-          else
-          {
-            return res.status(200).json({status:'invalid user'});
-          }
-        }
-      });
+        console.log("Entra token GET");
+        return await jwt.verify(token, 'secretKey', async (err, decoded) => {      
+            if (err) {
+                return res.status(200).json({status:'invalid token'});  
+            } else {
+                /* decoded ejemplo: { _id: '5f17f186b9aaa14c109a31b4', iat: 1595404678 } */
+                console.log(decoded);
+                const user = await Profesor.findById(new ObjectId(decoded._id));
+                console.log(user);
+                if(user)
+                {
+                    //next();
+                    console.log("devolviendo ID GET...");''
+                    return decoded._id;
+                }
+                else
+                    return res.status(200).json({status:'invalid user'});
+            }
+        });
     } else {
-        return res.status(200).json({status:'invalid token'});
+        /* Obtiene el token mediante POST */
+        const { token } = req.body;
+        if(token)
+        {
+            console.log("Entra token POST");
+            return await jwt.verify(token, 'secretKey', async (err, decoded) => {      
+                if (err) {
+                    return res.status(200).json({status:'invalid token'});  
+                } else {
+                    /* decoded ejemplo: { _id: '5f17f186b9aaa14c109a31b4', iat: 1595404678 } */
+                    console.log(decoded);
+                    const user = await Profesor.findById(new ObjectId(decoded._id));
+                    console.log(user);
+                    if(user)
+                    {
+                        //next();
+                        console.log("devolviendo ID POST...");''
+                        return decoded._id;
+                    }
+                    else
+                        return res.status(200).json({status:'invalid user'});
+                }
+            });
+        }
+        else
+            return res.status(200).json({status:'invalid token'});
     }
 }
 router.post('/isProfesor', async (req, res) => {
@@ -182,6 +209,8 @@ router.post('/isAlumno', async (req, res) => {
 });
 
 /* Manejo de peticiones en la base de datos */
+
+/* Obtiene todos los cursos de un profesor */
 router.get('/cursos' , async (req, res) => {
     /* Si no es profesor no continua */
     const idProfesor = await isProfesor(req, res); //idProfesor = _id   
@@ -189,6 +218,21 @@ router.get('/cursos' , async (req, res) => {
     /* Obtiene todos los cursos asociados a la id del profesor y lo devuelve */
     Curso.find({ idProfesor: new ObjectId(idProfesor) }).then((resJSON) => {
         const resultado = {status: "ok", cursos: resJSON}
+        res.status(200).json(resultado);
+    });
+})
+
+/* Guarda un nuevo curso asociado a un profesor*/
+router.post('/addCurso' , async (req, res) => {
+    const { nombreCurso, nivel, escuela, descripcion, password } = req.body;
+
+    /* Si no es profesor no continua */
+    const idProfesor = await isProfesor(req, res); //idProfesor = _id   
+    //console.log(idProfesor)
+
+    /* Obtiene todos los cursos asociados a la id del profesor y lo devuelve */
+    Curso.create({idProfesor:new ObjectId(idProfesor), nombreCurso:nombreCurso, nivel:nivel, escuela:escuela, descripcion:descripcion, password:password}).then((resJSON) => {
+        const resultado = {status: "ok", curso: resJSON}
         res.status(200).json(resultado);
     });
 })

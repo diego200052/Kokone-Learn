@@ -31,7 +31,7 @@ export class LogInComponent implements OnInit {
           if(res['status'] == "profesor")
           {
             localStorage.setItem('token', res.token);
-            this.router.navigate(['/profesor']);
+            this.router.navigate(['/profesor/cursos']);
           }
           else if(res['status'] == "alumno")
           {

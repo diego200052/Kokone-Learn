@@ -6,25 +6,104 @@
         </div>
         <!-- Botón de agregar curso para computadoras o tablets -->
         <div class="col m10 mt40 hide-on-small-only right-align">
-            <a class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Agregar curso</a>
+            <button class="waves-effect waves-light btn modal-trigger" data-target="modalAgregarCurso">
+                <i class="material-icons left">add_circle_outline</i>Agregar curso
+            </button>
         </div>
         <!-- Botón de agregar curso para celulares -->
-        <div class="col s12 hide-on-med-and-up">
-            <a class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Agregar curso</a>
+        <div class="col s8 offset-s6 hide-on-med-and-up">
+            <button class="waves-effect waves-light btn modal-trigger" data-target="modalAgregarCurso">
+                <i class="material-icons left">add_circle_outline</i>Agregar curso
+            </button>
         </div>
-        <div class="col s12"><span class="flow-text">This div is 12-columns wide on all screen sizes</span></div>
-        <div class="col s6 offset-s6"><span class="flow-text">6-columns (offset-by-6)</span></div>
     </div>
+    <hr>
 </div>
 
 <div *ngIf="cursos?.length == 0;else tieneCursos">
-    <div class="container center-align">
-        <h3>No has creado ningún curso todavía.</h3>
+    <div class="container center-align mt70">
+        <h4>No has creado ningún curso todavía.</h4>
     </div>
 </div>
 
 <ng-template #tieneCursos>
-    <div class="container">
-        
+    <div class="container mt40 mb40">
+        <div class="row">
+            <div class="col s12 m4" *ngFor="let curso of cursos">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title center-align">{{curso.nombreCurso}}</span>
+                        <hr>
+                        <div class="center-align">
+                            <p>{{ curso.nivel + " de primaria." }}</p>
+                            <p>{{ curso.escuela }}</p>
+                            <p>{{ curso.descripcion }}</p>
+                        </div>
+                    </div>
+                    <div class="card-action center-align">
+                        <button class="btn" (click)="ingresarCurso(curso._id)">Ingresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </ng-template>
+
+
+<!-- Modal Agregar Curso-->
+<div id="modalAgregarCurso" class="modal">
+    <div class="container">
+        <div class="modal-content">
+            <h4 class="mb30">Agregar un curso</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">assignment</i>
+                            <input name="nombreCurso" id="nombreCurso" type="text" class="validate" [(ngModel)]="curso.nombreCurso">
+                            <label for="nombreCurso">Nombre del curso</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">equalizer</i>
+                            <select name="nivel" id="nivel" [(ngModel)]="curso.nivel">
+                                <optgroup label="Primaria">
+                                    <option value="Primero">Primero</option>
+                                    <option value="Segundo">Segundo</option>
+                                    <option value="Tercero">Tercero</option>
+                                    <option value="Cuarto">Cuarto</option>
+                                    <option value="Quinto">Quinto</option>
+                                    <option value="Sexto">Sexto</option>
+                                </optgroup>
+                            </select>
+                            <label>Nivel educativo</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">school</i>
+                            <input name="escuela" id="escuela" type="text" class="validate" [(ngModel)]="curso.escuela">
+                            <label for="escuela">Escuela</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">short_text</i>
+                            <input name="descripcion" id="descripcion" type="text" class="validate" [(ngModel)]="curso.descripcion">
+                            <label for="descripcion">Descripción</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">enhanced_encryption</i>
+                            <input name="password" id="password" type="text" class="validate" [(ngModel)]="curso.password">
+                            <label for="password">Contraseña del curso</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer mb50">
+            <button class="btn modal-close waves-effect waves-green" (click)="agregarCurso()">Crear curso</button>
+        </div>
+    </div>
+</div>
