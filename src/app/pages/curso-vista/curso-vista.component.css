@@ -27,6 +27,8 @@ section {
     width: 100%;
     height: auto;
     display: block;
+    background-image: url(https://lh3.googleusercontent.com/-dveOiKGNCYk/VWE9zIQoBpI/AAAAAAABkx4/zqWDOGLOdbo/floaties-confeti-gifanimados-09%25255B5%25255D.gif?imgmax=800);
+
 }
 
 .card-img span {
@@ -54,6 +56,7 @@ section {
 
 .card-desc {
     padding: 1.25rem;
+    background: #dbfff8;
 }
 
 .card-desc h3 {
