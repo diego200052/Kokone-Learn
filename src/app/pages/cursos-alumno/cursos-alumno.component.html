@@ -1,3 +1,48 @@
-<p>cursos-alumno works!</p>
+<!--Para iterar y generar los componentes usamos *ngFor   
+        *(la varaible cursos es igual en el typescript)
+        * [nombre de la varaible que recibe como argumento vista-curso.ts]
+    Se generan n componentes de curso vista-->
+<div class="container content">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <span class="anchor" id="formLogin"></span>
+            <div class="card card-outline-secondary">
+                <div class="card-header">
+                    <h3>Curso</h3>
+                </div>
+                <div class="card-body ">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="nombre">Nombre del curso: </label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre ....." #nom >
+                        </div>
+                        <div class="form-group">
+                            <label for="clave">Clave del curso: </label>
+                            <input type="text" class="form-control" id="Imagen URL" placeholder="Ingrese clave del curso ....." #clav>
+                        </div> 
+                        <div class="form-group">
+                            <label for="nombre">Nombre del profesor: </label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre ....." #profes >
+                        </div>
+                        <div class="form-group">
+                            <label for="clave">Avance: </label>
+                            <input type="text" class="form-control" id="Imagen URL" placeholder="Ingrese clave del curso ....." #avance>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="clave">Tema actual: </label>
+                            <input type="text" class="form-control" id="Imagen URL" placeholder="Ingrese clave del curso ....." #temAct>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary" (click)="guardar(nom.value, clav.value, profes.value,
+                                                                                      avance.value, temAct.value )" >Agregar curso</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<img src="https://media.discordapp.net/attachments/726231452408348777/735357627277508649/este_si.gif" alt="" > <br>
+    <hr class="mb-5">
+    <div class="row row-flex">
+        <app-curso-vista *ngFor = "let c of cursos" [cur] = "c"></app-curso-vista>
+    </div>
+</div>
