@@ -42,7 +42,7 @@ const routes: Routes = [
   /*{ path: 'profesor', component: ProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },*/
   { path: 'profesor/cursos', component: CursosProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
   { path: 'profesor/cursos/:idCurso', component: CursoEspProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
-  { path: 'profesor/cursos/:idCurso/clase/:idClase/agregarDiapositiva', component: DiapositivaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
+  { path: 'profesor/cursos/:idCurso/clase/:idClase/agregarDiapositiva/:idPlantilla', component: DiapositivaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
   { path: 'profesor/cursos/:idCurso/clase/:idClase/seleccionarPlantilla', component: SelplantillaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
 
   /* ******** Pagina Log In ******** */

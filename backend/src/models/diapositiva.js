@@ -11,4 +11,4 @@ const diapositivaSchema = new Schema({
     timestamps: true
 });
 
-module.exports = model('diapositiva', cursoSchema, 'diapositiva');
+module.exports = model('diapositivas', diapositivaSchema, 'diapositivas');

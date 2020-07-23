@@ -8,15 +8,15 @@
         <div class="col s12 m4">
             <div class="row">
                 <div class="col s12 mt10 center-align">
-                    <button class="waves-effect waves-light btn">
+                    <button class="waves-effect waves-light btn modal-trigger" data-target="modalAgregarClase">
                         <i class="material-icons left">add_circle_outline</i>Añadir clase
                     </button>
                 </div>
                 <div class="col s12 mt20">
                     <div style="height: 400px; overflow-y: scroll;" *ngIf="clases?.length !== 0;else tieneClases">
                         <div class="mr20 ml20">
-                            <ul class="collection with-header">
-                                <li class="collection-item"><div>Clase #1<a class="waves-effect waves-light btn btn-flat secondary-content mn7" (click)="actualizaContenedorClase()"><i class="material-icons">play_arrow</i></a></div></li>
+                            <ul class="collection with-header" *ngFor="let clase of clases; index as i">
+                                <li class="collection-item"><div>Clase #{{i+1}}<a class="waves-effect waves-light btn btn-flat secondary-content mn7" (click)="actualizaContenedorClase(i)"><i class="material-icons">play_arrow</i></a></div></li>
                             </ul>
                         </div>
                     </div>
@@ -26,18 +26,18 @@
                 </div>
             </div>
         </div>
-        <div class="col s12 m4" *ngIf="clases?.length !== 0">
+        <div class="col s12 m4" *ngIf="clases?.length !== 0 && claseFija.i !== -1">
             <div class="row">
                 <div class="col s12 mt10 center-align">
-                    <button class="waves-effect waves-light btn">
+                    <button class="waves-effect waves-light btn" (click)="router.navigate(['profesor/cursos/'+claseFija.idCurso+'/clase/'+claseFija._id+'/seleccionarPlantilla']);">
                         <i class="material-icons left">add_circle_outline</i>Añadir diapositiva
                     </button>
                 </div>
                 <div class="col s12 mt20">
                     <div style="height: 200px; overflow-y: scroll;" *ngIf="diapositivas?.length !== 0;else tieneDiapositivas">
                         <div class="mr20 ml20">
-                            <ul class="collection with-header">
-                                <li class="collection-item"><div>Diapositiva #1<a class="waves-effect waves-light btn btn-flat secondary-content mn7" (click)="actualizaContenedorClase()"><i class="material-icons">play_arrow</i></a></div></li>
+                            <ul class="collection with-header" *ngFor="let diapositiva of diapositivas; index as i">
+                                <li class="collection-item"><div>Diapositiva #{{i+1}}<a class="waves-effect waves-light btn btn-flat secondary-content mn7" (click)="opcionesDiapositiva(i)"><i class="material-icons">play_arrow</i></a></div></li>
                             </ul>
                         </div>
                     </div>
@@ -66,31 +66,31 @@
                 </div>
             </div>
         </div>
-        <div class="col s12 m4" *ngIf="clases?.length !== 0;else Kokone">
+        <div class="col s12 m4" *ngIf="clases?.length !== 0 && claseFija.i !== -1">
             <div class="row">
                 <div class="col s12 center-align">
                     <h5>Datos de la clase</h5>
                 </div>
                 <form>
                     <div class="col s12 mt10 center-align">
-                        <p class="formSize">Clase No. #1 </p>
+                        <p class="formSize">Clase No. #{{claseFija.i+1}} </p>
                     </div>
                     <div class="input-field col s12">
-                        <input id="nombreClase" type="text" class="validate">
-                        <label for="nombreClase">Nombre de la clase</label>
+                        <input name="nombreClaseFija" id="nombreClaseFija" placeholder="Nombre de la clase" type="text" class="validate" [(ngModel)]="claseFija.nombreClase">
+                        <!--<label for="nombreClaseFija">Nombre de la clase</label>-->
                     </div>
                     <div class="col s12 m6 mt10 center-align">
                         <p class="formSize">Fecha de creación: </p>
                     </div>
                     <div class="col s12 m6 mt10 left-align">
-                        <p class="formSize">12/Enero/2020 </p>
+                        <p class="formSize">23/Julio/2020 </p>
                     </div>
                     <div class="col s12 mt10 center-align">
                         <p class="formSize">Descripción:</p>
                     </div>
                     <div class="input-field col s12 m12">
-                        <input id="descripcion" type="text" class="validate">
-                        <label for="descripcion">Descripción de la clase</label>
+                        <input name="descripcionFija" id="descripcionFija" placeholder="Descripción de la clase" type="text" class="validate" [(ngModel)]="claseFija.descripcion">
+                        <!--<label for="descripcionFija">Descripción de la clase</label>-->
                     </div>
                     <div class="col s12 center-align mt30">
                         <a class="waves-effect waves-light btn">Guardar cambios</a>
@@ -98,7 +98,7 @@
                 </form>
             </div>
         </div>
-        <ng-template #Kokone>
+        <ng-template *ngIf="clases?.length == 0 && claseFija.i == -1">
             <div class="col s12 m8 center-align">
                 <img class="animated-gif" src="assets/kokoneParpadeaAzulClaro.gif">
             </div>
@@ -164,6 +164,36 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Clase-->
+<div id="modalAgregarClase" class="modal">
+    <div class="container">
+        <div class="modal-content">
+            <h4 class="mb30">Agregar una clase</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">assignment</i>
+                            <input name="nombreClase" id="nombreClase" type="text" class="validate" [(ngModel)]="clase.nombreClase">
+                            <label for="nombreClase">Nombre de la clase</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">short_text</i>
+                            <input name="descripcion" id="descripcion" type="text" class="validate" [(ngModel)]="clase.descripcion">
+                            <label for="descripcion">Descripción</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer mb50">
+            <button class="btn modal-close waves-effect waves-green" (click)="agregarClase()">Crear clase</button>
         </div>
     </div>
 </div>
