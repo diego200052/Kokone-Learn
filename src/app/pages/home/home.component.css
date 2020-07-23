@@ -1,5 +1,6 @@
 .encabezado{
-	font-family: 'Lobster', cursive;
+    font-family: 'Lobster', cursive;
+    text-shadow: -3px -3px 3px #000000, 3px -3px 3px #000000, -3px 3px 3px #000000, 3px 3px 3px #000000;
 }
 
 .titulo{
@@ -10,4 +11,85 @@
 .titulo2{
 	font-family:'Butterfly Kids', cursive;
 	font-size: 2.5rem;
+}
+
+
+.title{
+    margin-top: 30px;
+}
+
+.nosotros{
+	text-align: justify;
+	width: 65%;
+    /* padding-left: 50px; */
+    margin-left: 25%;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Ranchers', cursive;
+    font-size: 3.5rem;
+}
+
+.somos{
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.5rem;
+}
+
+.parallax img{
+    width: 80%;
+}
+
+.letra1{
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.5rem;
+}
+
+.responsive-img img{
+    width: 150px;
+    height: 150px;
+
+}
+
+.separate{
+    margin-top: 5%;
+}
+
+#color1{
+    color: #ffcfdf;
+}
+
+#color2{
+    color: #fefdca;
+}
+
+#color3{
+    color: #e0f9b5;
+}
+
+#color4{
+    color: #a5dee5;
+}
+
+#color5{
+    color: #aa96da;
+}
+
+#color6{
+    color: #fcbad3;
+}
+
+.card{
+	height: 195px;
+	padding-top: 17px;
+}
+
+.card .card-image img {
+	height: 160px;
+}
+
+.card .card-title {
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Courgette', cursive;
 }

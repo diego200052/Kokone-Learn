@@ -1,5 +1,5 @@
 .brand-logo img {
-   height: 100px;
+   height: 80px;
 } 
 
 .brand-logo{
@@ -11,6 +11,7 @@
 .nav-wrapper {
 	/* background-image: url("https://i.pinimg.com/originals/e1/9f/c4/e19fc4f92bc65978ceac0213a1abaf65.gif"); */
     /*background-color: #008547 !important;*/
+    background-color: #ea7362;
     /* font-size: 60px; */
     font-weight: bold;
     height: 190%;
