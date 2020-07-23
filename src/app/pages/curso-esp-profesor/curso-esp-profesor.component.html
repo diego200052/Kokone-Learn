@@ -1,0 +1,169 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12 center-align">
+            <h3>{{ curso.nombreCurso }}</h3><hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="row">
+                <div class="col s12 mt10 center-align">
+                    <button class="waves-effect waves-light btn">
+                        <i class="material-icons left">add_circle_outline</i>Añadir clase
+                    </button>
+                </div>
+                <div class="col s12 mt20">
+                    <div style="height: 400px; overflow-y: scroll;" *ngIf="clases?.length !== 0;else tieneClases">
+                        <div class="mr20 ml20">
+                            <ul class="collection with-header">
+                                <li class="collection-item"><div>Clase #1<a class="waves-effect waves-light btn btn-flat secondary-content mn7" (click)="actualizaContenedorClase()"><i class="material-icons">play_arrow</i></a></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ng-template #tieneClases>
+                        <h6>No has agregado ninguna clase aún.<br><br>Comienza a crear tu contenido de una forma muy fácil, da clic en el botón superior.</h6>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4" *ngIf="clases?.length !== 0">
+            <div class="row">
+                <div class="col s12 mt10 center-align">
+                    <button class="waves-effect waves-light btn">
+                        <i class="material-icons left">add_circle_outline</i>Añadir diapositiva
+                    </button>
+                </div>
+                <div class="col s12 mt20">
+                    <div style="height: 200px; overflow-y: scroll;" *ngIf="diapositivas?.length !== 0;else tieneDiapositivas">
+                        <div class="mr20 ml20">
+                            <ul class="collection with-header">
+                                <li class="collection-item"><div>Diapositiva #1<a class="waves-effect waves-light btn btn-flat secondary-content mn7" (click)="actualizaContenedorClase()"><i class="material-icons">play_arrow</i></a></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ng-template #tieneDiapositivas>
+                        <h6>No has agregado ninguna diapositva aún.</h6>
+                    </ng-template>
+                </div>
+                <div *ngIf="ejercicios?.length !== 0">
+                    <div class="col s12 mt10 center-align">
+                        <button class="waves-effect waves-light btn">
+                            <i class="material-icons left">add_circle_outline</i>Añadir ejercicio
+                        </button>
+                    </div>
+                    <div class="col s12 mt20">
+                        <div style="height: 200px; overflow-y: scroll;" *ngIf="diapositivas?.length !== 0;else tieneDiapositivas">
+                            <div class="mr20 ml20">
+                                <ul class="collection with-header">
+                                    <li class="collection-item"><div>Ejercicio #1<a class="waves-effect waves-light btn btn-flat secondary-content mn7" (click)="actualizaContenedorClase()"><i class="material-icons">play_arrow</i></a></div></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ng-template #tieneDiapositivas>
+                            <h6>No has agregado ninguna diapositva aún.</h6>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4" *ngIf="clases?.length !== 0;else Kokone">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h5>Datos de la clase</h5>
+                </div>
+                <form>
+                    <div class="col s12 mt10 center-align">
+                        <p class="formSize">Clase No. #1 </p>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="nombreClase" type="text" class="validate">
+                        <label for="nombreClase">Nombre de la clase</label>
+                    </div>
+                    <div class="col s12 m6 mt10 center-align">
+                        <p class="formSize">Fecha de creación: </p>
+                    </div>
+                    <div class="col s12 m6 mt10 left-align">
+                        <p class="formSize">12/Enero/2020 </p>
+                    </div>
+                    <div class="col s12 mt10 center-align">
+                        <p class="formSize">Descripción:</p>
+                    </div>
+                    <div class="input-field col s12 m12">
+                        <input id="descripcion" type="text" class="validate">
+                        <label for="descripcion">Descripción de la clase</label>
+                    </div>
+                    <div class="col s12 center-align mt30">
+                        <a class="waves-effect waves-light btn">Guardar cambios</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <ng-template #Kokone>
+            <div class="col s12 m8 center-align">
+                <img class="animated-gif" src="assets/kokoneParpadeaAzulClaro.gif">
+            </div>
+        </ng-template>
+    </div>
+</div>
+
+<div class="container">
+    <hr>
+    <div class="row">
+        <div class="col s12 center-align">
+            <h5>Preguntas frecuentes</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="row">
+                <div class="col s12 mt20">
+                    <div style="height: 400px; overflow-y: scroll;" *ngIf="preguntas?.length !== 0;else tienePreguntas">
+                        <ul class="collection with-header">
+                            <li class="collection-item"><div>Clase #1<a href="#!" class="secondary-content"><i class="material-icons">play_arrow</i></a></div></li>
+                        </ul>
+                    </div>
+                    <ng-template #tienePreguntas>
+                        <h6>No has agregado ninguna pregunta aún.<br><br>Ahora podrás resolver las dudas de tus alumnos de forma inmediata, sólo carga las preguntas y Kokone se encargará del resto.</h6>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m8">
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">question_answer</i>
+                            <input name="pregunta1" id="pregunta1" type="text" class="validate" [(ngModel)]="preguntas[0]">
+                            <label for="pregunta1">Pregunta relacionada con el curso de {{ curso.nombreCurso }}</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">question_answer</i>
+                            <input name="pregunta2" id="pregunta2" type="text" class="validate" [(ngModel)]="preguntas[1]">
+                            <label for="pregunta2">Ahora ¿Cómo lo preguntarían tus alumnos?</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">question_answer</i>
+                            <input name="pregunta3" id="pregunta3" type="text" class="validate" [(ngModel)]="preguntas[2]">
+                            <label for="pregunta3">¿Alguna otra alternativa?</label>
+                        </div>
+                    </div>
+                    <div class="row mt20">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">chat</i>
+                            <input name="respuesta" id="respuesta" type="text" class="validate" [(ngModel)]="respuesta">
+                            <label for="respuesta">Introduce la respuesta que será enviada al alumno.</label>
+                        </div>
+                    </div>
+                    <div class="row center-align">
+                        <button class="btn modal-close waves-effect waves-green" (click)="agregarPregunta()">Añadir pregunta al curso.</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

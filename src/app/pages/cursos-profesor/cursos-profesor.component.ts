@@ -57,11 +57,19 @@ export class CursosProfesorComponent implements OnInit {
           console.log(res)
           /* Actualiza la cuadrícula de cursos */
           this.updateCursos();
+          /* Limpia valores */
+          this.curso = {
+            nombreCurso: "",
+            nivel: "",
+            escuela: "",
+            descripcion: "",
+            password: ""
+          }
       },
         error => console.log(error))
   }
 
   ingresarCurso(cursoID){
-    console.log("Botón de ingresar al curso seleccionado: " + cursoID);
+    this.router.navigate(['/profesor/cursos/' + cursoID]);
   }
 }

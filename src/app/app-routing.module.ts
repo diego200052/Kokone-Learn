@@ -18,6 +18,7 @@ import { ProfesorComponent } from './pages/profesor/profesor.component';
 /* Guard de autenticación */
 import { AuthenticationGuard } from './authentication.guard'
 import { CursosProfesorComponent } from './pages/cursos-profesor/cursos-profesor.component';
+import { CursoEspProfesorComponent } from './pages/curso-esp-profesor/curso-esp-profesor.component';
 
 /* 
   Este archivo se encarga de establecer las rutas dependiendo de la
@@ -40,6 +41,7 @@ const routes: Routes = [
   /* Páginas de acceso al Profesor */
   /*{ path: 'profesor', component: ProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },*/
   { path: 'profesor/cursos', component: CursosProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
+  { path: 'profesor/cursos/:idCurso', component: CursoEspProfesorComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
   { path: 'profesor/cursos/:idCurso/clase/:idClase/agregarDiapositiva', component: DiapositivaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
   { path: 'profesor/cursos/:idCurso/clase/:idClase/seleccionarPlantilla', component: SelplantillaComponent, canActivate: [AuthenticationGuard], data: {role: 'profesor'} },
 

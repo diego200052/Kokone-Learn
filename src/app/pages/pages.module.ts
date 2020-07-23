@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { CursosProfesorComponent } from './cursos-profesor/cursos-profesor.component';
 import { CursosAlumnoComponent } from './cursos-alumno/cursos-alumno.component';
 import { CursoVistaComponent } from './curso-vista/curso-vista.component';
+import { CursoEspProfesorComponent } from './curso-esp-profesor/curso-esp-profesor.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { CursoVistaComponent } from './curso-vista/curso-vista.component';
     SignupProfComponent,
     LogInComponent,
     CursosProfesorComponent,
-    CursoVistaComponent, CursosAlumnoComponent
+    CursoVistaComponent,
+    CursosAlumnoComponent,
+    CursoEspProfesorComponent
   ],
   imports: [
     /* Módulos de biblioteca */
