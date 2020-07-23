@@ -17,6 +17,7 @@ import { Error404Component } from './pages/error404/error404.component';
 import { AuthenticationGuard } from './authentication.guard'
 import { CursosProfesorComponent } from './pages/cursos-profesor/cursos-profesor.component';
 import { CursoEspProfesorComponent } from './pages/curso-esp-profesor/curso-esp-profesor.component';
+import { CursoEspAlumnoComponent } from './pages/curso-esp-alumno/curso-esp-alumno.component';
 
 /* 
   Este archivo se encarga de establecer las rutas dependiendo de la
@@ -46,6 +47,7 @@ const routes: Routes = [
   /* Páginas de acceso al Alumno */
   /* ******** Pagina Cursos Alu ******** */
   { path: 'cursosAlumno', component: CursosAlumnoComponent },
+  { path: 'alumno/cursos/:idCurso/clase/:idClase/view', component: CursoEspAlumnoComponent, canActivate: [AuthenticationGuard], data: {role: 'alumno'} },
   
   /* Página principal */
   { path: '', pathMatch: 'full', redirectTo: 'home' },

@@ -200,10 +200,9 @@ export class DiapositivaComponent implements OnInit {
 
     this.route.params.subscribe(params => {
 
-      /* Recibe el parámetro idCurso, idClase e idPlantilla desde la URL */
+      /* Recibe el parámetro idCurso, idClase desde la URL */
       this.cursoID = params['idCurso'];
       this.claseID = params['idClase'];
-      this.tipoPlantilla = params['idPlantilla'];
 
     });
 

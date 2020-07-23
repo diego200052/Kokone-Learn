@@ -20,6 +20,7 @@ import { CursoVistaComponent } from './curso-vista/curso-vista.component';
 import { CursoEspProfesorComponent } from './curso-esp-profesor/curso-esp-profesor.component';
 import { CursoEspAlumnoComponent } from './curso-esp-alumno/curso-esp-alumno.component';
 import { EstudioAlumnoComponent } from './estudio-alumno/estudio-alumno.component';
+import { SafeHtmlPipePipe } from './curso-esp-alumno/safe-html-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EstudioAlumnoComponent } from './estudio-alumno/estudio-alumno.componen
     CursosAlumnoComponent,
     CursoEspProfesorComponent,
     CursoEspAlumnoComponent,
-    EstudioAlumnoComponent
+    EstudioAlumnoComponent,
+    SafeHtmlPipePipe
   ],
   imports: [
     /* Módulos de biblioteca */

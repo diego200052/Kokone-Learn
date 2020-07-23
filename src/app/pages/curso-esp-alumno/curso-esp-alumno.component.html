@@ -1,1 +1,72 @@
-<p>curso-esp-alumno works!</p>
+<div *ngIf="diapositivas[numDiapositiva]?.tipoPlantilla === 'P1'">
+    <div class="container mt50 diapositiva" *ngIf="diapositivas?.length !== 0">
+        <div class="row">
+            <div class="col s12">
+                <div [innerHTML]="diapositivas[numDiapositiva].titulo | safeHtmlPipe"></div>
+                <hr>
+            </div>
+            <div class="col s12 m6 mt20">
+                <div [innerHTML]="diapositivas[numDiapositiva].contenido | safeHtmlPipe"></div>
+            </div>
+            <div class="col s12 m6 mt40">
+                <div class="row">
+                    <img class="imagePreview" [src]="diapositivas[numDiapositiva].urlImagen">
+                </div>
+                <div class="row">
+                    <div class="box center-align">
+                        <img class="imageKokone" src="assets/personajes/verde/kokone6.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="diapositivas[numDiapositiva]?.tipoPlantilla === 'P2'">
+    <div class="container mt50 diapositiva" *ngIf="diapositivas?.length !== 0">
+        <div class="row">
+            <div class="col s12">
+                <div [innerHTML]="diapositivas[numDiapositiva].titulo | safeHtmlPipe"></div>
+                <hr>
+            </div>
+            <div class="col s12">
+                <div class="row">
+                    <img class="imagePreview" [src]="diapositivas[numDiapositiva].urlImagen">
+                </div>
+            </div>
+            <div class="col s12 m6 mt20">
+                <div [innerHTML]="diapositivas[numDiapositiva].contenido | safeHtmlPipe"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="diapositivas[numDiapositiva]?.tipoPlantilla === 'P3'">
+    <div class="container mt50 diapositiva" *ngIf="diapositivas?.length !== 0">
+        <div class="row">
+            <div class="col s12">
+                <div [innerHTML]="diapositivas[numDiapositiva].titulo | safeHtmlPipe"></div>
+                <hr>
+            </div>
+            <div class="col s12">
+                <div class="row">
+                    <img class="imagePreview" [src]="diapositivas[numDiapositiva].urlImagen">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt30 mb30">
+    <div class="row">
+        <div class="col s6 left-align">
+            <a *ngIf="numDiapositiva > 0" class="waves-effect waves-light btn" (click)="anteriorDiapositiva()"><i class="material-icons left">arrow_back</i>Anterior</a>
+        </div>
+        <div class="col s6 right-align" *ngIf="numDiapositiva < (diapositivas?.length-1)">
+            <a class="waves-effect waves-light btn" (click)="siguienteDiapositiva()"><i class="material-icons right">arrow_forward</i>Siguiente</a>
+        </div>
+        <div class="col s6 right-align" *ngIf="numDiapositiva >= (diapositivas?.length-1)">
+            <a class="waves-effect waves-light btn" (click)="finalizarClase()"><i class="material-icons right">sentiment_very_satisfied</i>Finalizar Clase</a>
+        </div>
+    </div>
+</div>

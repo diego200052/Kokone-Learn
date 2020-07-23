@@ -272,8 +272,8 @@ router.post('/addClase' , async (req, res) => {
 router.get('/diapositivas' , async (req, res) => {
     const { idClase } = req.query;
 
-    /* Si no es profesor no continua */
-    const idProfesor = await isProfesor(req, res); //idProfesor = _id   
+    /* Tanto profesores como alumnos pueden acceder a la información de las diapositivas de la clase */
+    //const idProfesor = await isProfesor(req, res); //idProfesor = _id   
 
     /* Obtiene todos los cursos asociados a la id del profesor y lo devuelve */
     Diapositiva.find({ idClase: new ObjectId(idClase) }).then((resJSON) => {
